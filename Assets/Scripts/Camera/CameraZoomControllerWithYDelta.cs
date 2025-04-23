@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class CameraZoomController : MonoBehaviour
+public class CameraZoomControllerWithYDelta : MonoBehaviour
 {
     private Camera cam;
     private float originalSize;
