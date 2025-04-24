@@ -10,6 +10,7 @@ TagManager:
   - Yellow_Gem
   - Borders
   - Bullet
+  - Boulder
   layers:
   - Default
   - TransparentFX
