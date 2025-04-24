@@ -20,22 +20,17 @@ public class BreakingBridge : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Триггер сработал");
         if (_isBroken)
             return;
-
-        Debug.Log(GravityController.Instance.CurrentGravity);
-        Debug.Log(other.CompareTag("Boulder"));
 
         if (other.CompareTag("Boulder") &&
             GravityController.Instance.CurrentGravity == GravityDirection.Up)
         {
-            Debug.Log("вызов BreakBridge");
             BreakBridge();
         }
     }
 
-    public void BreakBridge()
+    private void BreakBridge()
     {
         _isBroken = true;
         if (_bridgeCollider != null)
