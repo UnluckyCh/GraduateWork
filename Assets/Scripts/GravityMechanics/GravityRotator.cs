@@ -11,7 +11,7 @@ public class GravityRotator : MonoBehaviour
     public void RotateWorld(GravityDirection newGravity)
     {
         float targetAngle = GetTargetRotation(newGravity);
-        StopAllCoroutines();
+        //StopAllCoroutines();
         StartCoroutine(RotateToAngle(targetAngle));
     }
 
