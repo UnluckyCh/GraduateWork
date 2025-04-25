@@ -6,12 +6,12 @@ public class GravityRotator : MonoBehaviour
 {
     public event Action OnRotationCompleted;
 
-    [SerializeField] private float _rotationSpeed = 100f;
+    [SerializeField] private float _rotationTime = 1f;
 
     public void RotateWorld(GravityDirection newGravity)
     {
         float targetAngle = GetTargetRotation(newGravity);
-        //StopAllCoroutines();
+        StopAllCoroutines();
         StartCoroutine(RotateToAngle(targetAngle));
     }
 
@@ -20,7 +20,7 @@ public class GravityRotator : MonoBehaviour
         return gravityDirection switch
         {
             GravityDirection.Up => 180f,
-            GravityDirection.Right => -90f,
+            GravityDirection.Right => 270f,
             GravityDirection.Down => 0f,
             GravityDirection.Left => 90f,
             _ => 0f,
@@ -33,10 +33,10 @@ public class GravityRotator : MonoBehaviour
         Quaternion endRotation = Quaternion.Euler(0f, 0f, targetAngle);
         float elapsed = 0f;
 
-        while (elapsed < 1f)
+        while (elapsed < _rotationTime)
         {
             transform.rotation = Quaternion.Lerp(startRotation, endRotation, elapsed);
-            elapsed += Time.deltaTime * (_rotationSpeed / 90f);
+            elapsed += Time.deltaTime;
             yield return null;
         }
 

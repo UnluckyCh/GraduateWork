@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public enum GravityDirection
@@ -68,17 +69,24 @@ public class GravityController : MonoBehaviour
         if (IsActiveRotate)
             return;
 
-        if (_boulderMover)
-        {
-            if (_boulderMover.BoulderIsFalling)
-                return;
-        }
+        if (_boulderMover && _boulderMover.BoulderIsFalling)
+            return;
 
+        StartCoroutine(PrepareAndRotate(newGravity));
+    }
+
+    private IEnumerator PrepareAndRotate(GravityDirection newGravity)
+    {
         IsActiveRotate = true;
         _currentGravity = newGravity;
-        _gravityRotator.RotateWorld(newGravity);
+
         OnGravityChangeStarted?.Invoke(_currentGravity);
+
+        yield return new WaitForEndOfFrame();
+
+        _gravityRotator.RotateWorld(_currentGravity);
     }
+
 
     private void OnDisable()
     {
