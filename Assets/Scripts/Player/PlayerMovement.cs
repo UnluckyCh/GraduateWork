@@ -30,7 +30,9 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        originalScale = transform.localScale;
+        Vector3 scale = transform.localScale;
+        scale.x = Mathf.Abs(scale.x);
+        originalScale = scale;
         auraObject.SetActive(false);
         TryGetComponent(out _playerController);
         _attackController = GetComponentInChildren<AttackController>();

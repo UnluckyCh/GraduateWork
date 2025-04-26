@@ -23,6 +23,9 @@ public class RotatorTrigger : MonoBehaviour
     [SerializeField]
     private TypeRotator _typeRotator;
 
+    [SerializeField]
+    private bool _isOneTimeRotator = false;
+
     private ParticleSystem _childParticleSystem;
     private Color _originalParticleStartColor;
 
@@ -32,6 +35,7 @@ public class RotatorTrigger : MonoBehaviour
 
     private RotatorUnifier _rotatorUnifier;
 
+    private bool _hasActivated = false;
     private bool _isActive = true;
 
     private void Awake()
@@ -65,7 +69,14 @@ public class RotatorTrigger : MonoBehaviour
 
     private void OnStartAppear()
     {
-        StartCoroutine(AppearCoroutine());
+        if (_isOneTimeRotator && _hasActivated)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            StartCoroutine(AppearCoroutine());
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -78,6 +89,7 @@ public class RotatorTrigger : MonoBehaviour
         Destroy(collision.gameObject);
 
         _isActive = false;
+        _hasActivated = true;
 
         switch (_typeRotator)
         {
