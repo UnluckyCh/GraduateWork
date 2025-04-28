@@ -3,6 +3,15 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public enum AirControlMode           // тип Ђсложностиї
+    {
+        Always,              // 1) как сейчас: можно двигатьс€ в воздухе всегда
+        LockAfterGravity     // 2) после смены гравитации Ц до приземлени€ нельз€
+    }
+
+    [Header("Movement mode")]
+    [SerializeField] private AirControlMode airControlMode = AirControlMode.Always;
+
     public bool IsGrounded => _isGrounded;
 
     public float movePower = 6.5f;
@@ -26,6 +35,9 @@ public class PlayerMovement : MonoBehaviour
     private bool hasDoubleJumpEffect = false;
     private bool _isGrounded = false;
 
+    private bool airControlLocked = false;        // сейчас ли запрещено верх/низ
+    private bool fallStartedAfterGravity = false; // чтобы не отпустить сразу же, когда v=0 на первом кадре
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -37,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         TryGetComponent(out _playerController);
         _attackController = GetComponentInChildren<AttackController>();
         _playerController.OnPlayerDead += OnPlayerDead;
+        GravityController.Instance.OnGravityChangeFinished += OnGravityChangeFinished;
     }
 
     void Update()
@@ -49,11 +62,23 @@ public class PlayerMovement : MonoBehaviour
                 DisableDoubleJumpEffect();
             }
         }
+
+        if (airControlLocked)
+        {
+            // ждЄм, пока скорость станет не-нулевой (начало реального падени€)
+            if (!fallStartedAfterGravity && Mathf.Abs(rb.velocity.y) > 0.05f)
+                fallStartedAfterGravity = true;
+
+            // а потом, когда после начала падени€ скорость снова 0, тоже разблокируем
+            if (fallStartedAfterGravity && Mathf.Abs(rb.velocity.y) < 0.05f)
+                airControlLocked = false;
+        }
     }
 
     public void Run()
     {
-        if (GravityController.Instance.IsActiveRotate)
+        if (GravityController.Instance.IsActiveRotate ||
+            (airControlMode == AirControlMode.LockAfterGravity && airControlLocked))
             return;
 
         Vector3 moveVelocity = Vector3.zero;
@@ -132,6 +157,19 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void OnGravityChangeFinished(GravityDirection _)
+    {
+        if (airControlMode == AirControlMode.LockAfterGravity)
+        {
+            airControlLocked = true;          // запрещаем Run()
+            fallStartedAfterGravity = false;  // ждЄм, пока реально начнЄт падать
+        }
+
+        anim.SetBool("isJump", true);
+        isJump = true;
+        isFall = false;
+    }
+
     public void EnableDoubleJumpEffect()
     {
         hasDoubleJumpEffect = true;
@@ -147,10 +185,7 @@ public class PlayerMovement : MonoBehaviour
         auraObject.SetActive(false);
     }
 
-    private void OnPlayerDead()
-    {
-        DisableDoubleJumpEffect();
-    }
+    private void OnPlayerDead() => DisableDoubleJumpEffect();
 
     private void OnDisable()
     {
