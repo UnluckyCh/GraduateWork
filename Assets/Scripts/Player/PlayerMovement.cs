@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public enum AirControlMode           // тип «сложности»
+    public enum AirControlMode
     {
-        Always,              // 1) как сейчас: можно двигаться в воздухе всегда
-        LockAfterGravity     // 2) после смены гравитации – до приземления нельзя
+        Always,
+        LockAfterGravity
     }
 
     [Header("Movement mode")]
@@ -35,8 +35,11 @@ public class PlayerMovement : MonoBehaviour
     private bool hasDoubleJumpEffect = false;
     private bool _isGrounded = false;
 
-    private bool airControlLocked = false;        // сейчас ли запрещено верх/низ
-    private bool fallStartedAfterGravity = false; // чтобы не отпустить сразу же, когда v=0 на первом кадре
+    private bool airControlLocked = false;
+    private bool fallStartedAfterGravity = false;
+
+    private float _jumpClickBlockTimer = 0f;
+    private const float JUMPCLICKBLOCKDURATION = 0.1f;
 
     void Start()
     {
@@ -61,6 +64,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 DisableDoubleJumpEffect();
             }
+        }
+
+        if (_jumpClickBlockTimer > 0f)
+        {
+            _jumpClickBlockTimer -= Time.deltaTime;
         }
 
         if (airControlLocked)
@@ -124,25 +132,28 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Если нажата кнопка прыжка и игрок всё ещё находится в пределах "койот тайма"
-        if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)) && coyoteTimeCounter > 0f)
+        if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)) && coyoteTimeCounter > 0f && _jumpClickBlockTimer <= 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             anim.SetBool("isJump", true);
             isJump = true;
             isFall = false;
+            _jumpClickBlockTimer = JUMPCLICKBLOCKDURATION;
         }
-        else if (hasDoubleJumpEffect && isJump && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)))
+        else if (hasDoubleJumpEffect && isJump && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)) && _jumpClickBlockTimer <= 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             anim.SetBool("isJump", true);
             isJump = false;
+            _jumpClickBlockTimer = JUMPCLICKBLOCKDURATION;
         }
 
-        if (hasDoubleJumpEffect && !_isGrounded && isFall && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)))
+        if (hasDoubleJumpEffect && !_isGrounded && isFall && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)) && _jumpClickBlockTimer <= 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             anim.SetBool("isJump", true);
             isFall = false;
+            _jumpClickBlockTimer = JUMPCLICKBLOCKDURATION;
         }
 
         if (rb.velocity.y <= 0 && _isGrounded)
