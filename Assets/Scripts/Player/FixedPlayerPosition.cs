@@ -41,7 +41,7 @@ public class FixedPlayerPosition : MonoBehaviour
         _player.position = newAnchorWorldPosition - Vector3.up * _verticalOffset;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (_isRotating)
         {
