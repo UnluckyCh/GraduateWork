@@ -26,7 +26,7 @@ public class MenuController : MonoBehaviour
     public void SetDifficulty(int level)
     {
         PlayerPrefs.SetInt("Difficulty", level);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
     public void QuitGame()
