@@ -48,6 +48,9 @@ public class EnemySpriteAnimation : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (GravityController.Instance.IsActiveRotate)
+            return;
+
         if (other.gameObject.CompareTag("Player"))
         {
             if (!isAttacking)
