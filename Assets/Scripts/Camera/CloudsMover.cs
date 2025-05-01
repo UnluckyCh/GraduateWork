@@ -17,7 +17,12 @@ public class CloudsMover : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
         {
             Transform cloudTransform = transform.GetChild(i);
+
             float randomSpeed = Random.Range(_minMoveSpeed, _maxMoveSpeed);
+            float randomX = Random.Range(_resetXPosition, _maxXPosition);
+            float randomY = Random.Range(_randomYRange.x, _randomYRange.y);
+
+            cloudTransform.localPosition = new Vector3(randomX, randomY, cloudTransform.localPosition.z);
 
             _clouds[i] = new Cloud(cloudTransform, randomSpeed);
         }
@@ -36,12 +41,17 @@ public class CloudsMover : MonoBehaviour
 
             if (cloud.Transform.localPosition.x >= _maxXPosition)
             {
-                Vector3 newPosition = cloud.Transform.localPosition;
-                newPosition.x = _resetXPosition;
-                newPosition.y = Random.Range(_randomYRange.x, _randomYRange.y);
-                cloud.Transform.localPosition = newPosition;
+                ResetCloudPosition(cloud);
             }
         }
+    }
+
+    private void ResetCloudPosition(Cloud cloud)
+    {
+        Vector3 newPosition = cloud.Transform.localPosition;
+        newPosition.x = _resetXPosition;
+        newPosition.y = Random.Range(_randomYRange.x, _randomYRange.y);
+        cloud.Transform.localPosition = newPosition;
     }
 
     private class Cloud

@@ -39,7 +39,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
-        Cursor.visible = false;
+        //Cursor.visible = false;
         Time.timeScale = 1f;
         isPaused = false;
         pauseCanvas.enabled = false;

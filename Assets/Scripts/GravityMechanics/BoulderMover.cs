@@ -91,7 +91,7 @@ public class BoulderMover : MonoBehaviour
         }
 
         if (distance > 0.01f)
-            OnBoulderFlewDistance.Invoke(distance);
+            OnBoulderFlewDistance?.Invoke(distance);
 
         transform.position = end;
         BoulderIsFalling = false;
