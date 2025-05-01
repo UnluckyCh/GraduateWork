@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UnityEngine;
 
@@ -41,6 +42,8 @@ public class PlayerMovement : MonoBehaviour
     private float _jumpClickBlockTimer = 0f;
     private const float JUMPCLICKBLOCKDURATION = 0.1f;
 
+    private bool _onlyFallingBoulderUnderFoot = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -57,6 +60,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        DetectGround();
+
         if (hasDoubleJumpEffect)
         {
             doubleJumpEffectTimer -= Time.deltaTime;
@@ -73,14 +78,50 @@ public class PlayerMovement : MonoBehaviour
 
         if (airControlLocked)
         {
-            // ждём, пока скорость станет не-нулевой (начало реального падения)
-            if (!fallStartedAfterGravity && Mathf.Abs(rb.velocity.y) > 0.05f)
-                fallStartedAfterGravity = true;
+            if (_onlyFallingBoulderUnderFoot)
+                return;
 
-            // а потом, когда после начала падения скорость снова 0, тоже разблокируем
-            if (fallStartedAfterGravity && Mathf.Abs(rb.velocity.y) < 0.05f)
+            if (_isGrounded)
+            {
                 airControlLocked = false;
+            }
+            else
+            {
+                if (!fallStartedAfterGravity && Mathf.Abs(rb.velocity.y) > 0.05f)
+                    fallStartedAfterGravity = true;
+
+                if (fallStartedAfterGravity && Mathf.Abs(rb.velocity.y) < 0.05f)
+                    airControlLocked = false;
+            }
         }
+    }
+
+    private void DetectGround()
+    {
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.down, 0.6f);
+
+        bool anyStableSurface = false;
+        bool anyFallingBoulder = false;
+
+        foreach (var hit in hits)
+        {
+            if (hit.collider == null || hit.collider.isTrigger) continue;
+
+            if (hit.collider.TryGetComponent<BoulderMover>(out var boulder))
+            {
+                if (boulder.BoulderIsFalling)
+                    anyFallingBoulder = true;
+                else
+                    anyStableSurface = true;
+            }
+            else
+            {
+                anyStableSurface = true;
+            }
+        }
+
+        _isGrounded = anyStableSurface;
+        _onlyFallingBoulderUnderFoot = !anyStableSurface && anyFallingBoulder;
     }
 
     public void Run()
@@ -115,11 +156,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        // Визуализация рейкаста: рисуем красную линию от центра объекта вниз на 0.4 единиц
         Debug.DrawRay(transform.position, Vector2.down * 0.6f, Color.red);
 
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.down, 0.6f);
-        _isGrounded = hits.Any(hit => hit.collider != null && !hit.collider.isTrigger);
+        //RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.down, 0.6f);
+        //_isGrounded = hits.Any(IsSolidGround);
 
         // Если игрок на земле, то обновляем счетчик "койот тайма"
         if (_isGrounded && !isJump)
@@ -132,7 +172,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Если нажата кнопка прыжка и игрок всё ещё находится в пределах "койот тайма"
-        if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)) && coyoteTimeCounter > 0f && _jumpClickBlockTimer <= 0f)
+        if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)) && coyoteTimeCounter > 0f && _jumpClickBlockTimer <= 0f && !_onlyFallingBoulderUnderFoot)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             anim.SetBool("isJump", true);
@@ -140,7 +180,7 @@ public class PlayerMovement : MonoBehaviour
             isFall = false;
             _jumpClickBlockTimer = JUMPCLICKBLOCKDURATION;
         }
-        else if (hasDoubleJumpEffect && isJump && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)) && _jumpClickBlockTimer <= 0f)
+        else if (hasDoubleJumpEffect && isJump && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)) && _jumpClickBlockTimer <= 0f && !_onlyFallingBoulderUnderFoot)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             anim.SetBool("isJump", true);
@@ -148,7 +188,7 @@ public class PlayerMovement : MonoBehaviour
             _jumpClickBlockTimer = JUMPCLICKBLOCKDURATION;
         }
 
-        if (hasDoubleJumpEffect && !_isGrounded && isFall && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)) && _jumpClickBlockTimer <= 0f)
+        if (hasDoubleJumpEffect && !_isGrounded && isFall && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)) && _jumpClickBlockTimer <= 0f && !_onlyFallingBoulderUnderFoot)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             anim.SetBool("isJump", true);
@@ -168,6 +208,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private static bool IsSolidGround(RaycastHit2D hit)
+    {
+        if (hit.collider == null || hit.collider.isTrigger) return false;
+
+        var boulder = hit.collider.GetComponent<BoulderMover>();
+        return boulder == null || !boulder.BoulderIsFalling;
+    }
+
     private void OnGravityChangeFinished(GravityDirection _)
     {
         if (airControlMode == AirControlMode.LockAfterGravity)
@@ -175,6 +223,9 @@ public class PlayerMovement : MonoBehaviour
             airControlLocked = true;          // запрещаем Run()
             fallStartedAfterGravity = false;  // ждём, пока реально начнёт падать
         }
+
+        _isGrounded = false;
+        coyoteTimeCounter = 0f;
 
         anim.SetBool("isJump", true);
         isJump = true;
