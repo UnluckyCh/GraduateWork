@@ -40,6 +40,7 @@ public class LevelController : MonoBehaviour
         //healthUIUpdater.SetCurrentHealth(10);
         simplePlayerController.shieldEffectDuration = 20f;
         playerMovement.doubleJumpEffectDuration = 20f;
+        playerMovement.SetAirControlMode(PlayerMovement.AirControlMode.Always);
     }
 
     private void SetDifficulty2()
@@ -48,6 +49,7 @@ public class LevelController : MonoBehaviour
         //healthUIUpdater.SetCurrentHealth(5);
         simplePlayerController.shieldEffectDuration = 15f;
         playerMovement.doubleJumpEffectDuration = 15f;
+        playerMovement.SetAirControlMode(PlayerMovement.AirControlMode.LockAfterGravity);
     }
 
     private void SetDifficulty3()
@@ -56,5 +58,6 @@ public class LevelController : MonoBehaviour
         //healthUIUpdater.SetCurrentHealth(3);
         simplePlayerController.shieldEffectDuration = 10f;
         playerMovement.doubleJumpEffectDuration = 10f;
+        playerMovement.SetAirControlMode(PlayerMovement.AirControlMode.LockAfterGravity);
     }
 }

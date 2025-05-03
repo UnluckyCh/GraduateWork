@@ -1,10 +1,10 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
     public GameObject buttonsMenu;
-    public GameObject difficultyMenu;
+    public GameObject difficultyMenu1;
+    public GameObject difficultyMenu2;
 
     public void Start()
     {
@@ -14,19 +14,15 @@ public class MenuController : MonoBehaviour
     public void ShowMainMenu()
     {
         buttonsMenu.SetActive(true);
-        difficultyMenu.SetActive(false);
+        difficultyMenu1.SetActive(false);
+        difficultyMenu2.SetActive(false);
     }
 
     public void ShowDifficultyMenu()
     {
         buttonsMenu.SetActive(false);
-        difficultyMenu.SetActive(true);
-    }
-
-    public void SetDifficulty(int level)
-    {
-        PlayerPrefs.SetInt("Difficulty", level);
-        SceneManager.LoadScene(0);
+        difficultyMenu1.SetActive(true);
+        difficultyMenu2.SetActive(true);
     }
 
     public void QuitGame()

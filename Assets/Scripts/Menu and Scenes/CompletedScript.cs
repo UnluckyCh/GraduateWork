@@ -18,7 +18,7 @@ public class CompletedScript : MonoBehaviour
 
     public void CompletedGame()
     {
-        if (pauseMenu != null)
+        if (pauseMenu)
         {
             pauseMenu.ResumeGame();
             pauseMenu.BlockPause();
@@ -53,7 +53,7 @@ public class CompletedScript : MonoBehaviour
 
     public void LoadMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     void UpdateCompletedText()
@@ -79,11 +79,11 @@ public class CompletedScript : MonoBehaviour
             }
         }
 
-        if (countGemsText != null)
+        if (countGemsText)
         {
             // Получаем количество собранных жёлтых гемов
             GemCounter gemCounter = FindObjectOfType<GemCounter>();
-            if (gemCounter != null)
+            if (gemCounter)
             {
                 int yellowGemsCollected = gemCounter.GetYellowGemsCollected();
                 int totalYellowGems = gemCounter.GetTotalYellowGems();

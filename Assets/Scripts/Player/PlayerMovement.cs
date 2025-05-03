@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     [Header("Movement mode")]
-    [SerializeField] private AirControlMode airControlMode = AirControlMode.Always;
+    [SerializeField] private AirControlMode _airControlMode = AirControlMode.Always;
 
     public bool IsGrounded => _isGrounded;
 
@@ -127,7 +127,7 @@ public class PlayerMovement : MonoBehaviour
     public void Run()
     {
         if (GravityController.Instance.IsActiveRotate ||
-            (airControlMode == AirControlMode.LockAfterGravity && airControlLocked))
+            (_airControlMode == AirControlMode.LockAfterGravity && airControlLocked))
             return;
 
         Vector3 moveVelocity = Vector3.zero;
@@ -218,7 +218,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnGravityChangeFinished(GravityDirection _)
     {
-        if (airControlMode == AirControlMode.LockAfterGravity)
+        if (_airControlMode == AirControlMode.LockAfterGravity)
         {
             airControlLocked = true;          // запрещаем Run()
             fallStartedAfterGravity = false;  // ждём, пока реально начнёт падать
@@ -245,6 +245,11 @@ public class PlayerMovement : MonoBehaviour
         doubleJumpEffectTimer = 0f;
         gemObject.SetActive(true);
         auraObject.SetActive(false);
+    }
+
+    public void SetAirControlMode(AirControlMode mode)
+    {
+        _airControlMode = mode;
     }
 
     private void OnPlayerDead() => DisableDoubleJumpEffect();
