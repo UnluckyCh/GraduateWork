@@ -28752,6 +28752,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1344274725}
     m_Modifications:
+    - target: {fileID: 555358100228464518, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 114
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669749075884799397, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 470
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446714180919688634, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 470
+      objectReference: {fileID: 0}
+    - target: {fileID: 2475925439020621913, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 114
+      objectReference: {fileID: 0}
+    - target: {fileID: 4790046952993994221, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 470
+      objectReference: {fileID: 0}
+    - target: {fileID: 4790046952993994221, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 460
+      objectReference: {fileID: 0}
+    - target: {fileID: 4790046952993994221, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4977661351626599301, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 470
+      objectReference: {fileID: 0}
     - target: {fileID: 5037753313176814052, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
       propertyPath: m_Name
       value: Canvas Game Competed
@@ -28844,18 +28876,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 7028654241280658111, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
-      propertyPath: m_RenderMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7028654241280658111, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
-      propertyPath: m_SortingOrder
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 7072505136538866978, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
-      propertyPath: m_ScreenMatchMode
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
