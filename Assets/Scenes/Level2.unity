@@ -44874,6 +44874,7 @@ MonoBehaviour:
   - {fileID: 540494840}
   - {fileID: 1911905849}
   - {fileID: 714184281}
+  _screenFader: {fileID: 1536960408}
 --- !u!114 &1273640654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49314,6 +49315,7 @@ MonoBehaviour:
   - {fileID: 80627207}
   - {fileID: 1732997438}
   pauseMenu: {fileID: 1273640653}
+  _screenFader: {fileID: 1536960408}
 --- !u!114 &1492514331
 MonoBehaviour:
   m_ObjectHideFlags: 0

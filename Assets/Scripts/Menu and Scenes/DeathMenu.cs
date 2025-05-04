@@ -12,6 +12,9 @@ public class DeathMenu : MonoBehaviour
     public Button[] buttons;
     public PauseMenu pauseMenu;
 
+    [Header("Переключатель сцен")]
+    [SerializeField] private ScreenFader _screenFader;
+
     void Awake()
     {
         deathCanvas.enabled = false;
@@ -39,12 +42,12 @@ public class DeathMenu : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        _screenFader.FadeInAndLoadNextScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LoadMenu()
     {
-        SceneManager.LoadScene(0);
+        _screenFader.FadeInAndLoadNextScene(0);
     }
 
     public void QuitGame()

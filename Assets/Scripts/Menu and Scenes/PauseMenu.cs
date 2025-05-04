@@ -11,6 +11,9 @@ public class PauseMenu : MonoBehaviour
     private bool block = false;
     public Button[] buttons;
 
+    [Header("Переключатель сцен")]
+    [SerializeField] private ScreenFader _screenFader;
+
     void Start()
     {
         Time.timeScale = 1f;
@@ -68,12 +71,12 @@ public class PauseMenu : MonoBehaviour
     public void RestartGame()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        _screenFader.FadeInAndLoadNextScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LoadMenu()
     {
-        SceneManager.LoadScene(0);
+        _screenFader.FadeInAndLoadNextScene(0);
         Time.timeScale = 1f;
     }
 
