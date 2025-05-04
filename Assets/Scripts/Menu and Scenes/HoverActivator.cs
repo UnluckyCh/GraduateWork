@@ -6,12 +6,18 @@ public class HoverActivator : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public bool Block = false;
 
     [SerializeField] private GameObject _targetObject;
+    [SerializeField] private MultiObjectActivator _multiActivator;
+    [SerializeField] private int _objectIndex;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (_targetObject)
         {
             _targetObject.SetActive(true);
+        }
+        if (_multiActivator)
+        {
+            _multiActivator.ActivateOnly(_objectIndex);
         }
     }
 
@@ -22,6 +28,10 @@ public class HoverActivator : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         if (_targetObject)
         {
             _targetObject.SetActive(false);
+        }
+        if (_multiActivator)
+        {
+            _multiActivator.ActivateDefault();
         }
     }
 }

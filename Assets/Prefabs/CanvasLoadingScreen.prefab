@@ -137,7 +137,7 @@ MonoBehaviour:
   _outerSquare: {fileID: 5857278660648031702}
   _innerSquare: {fileID: 9139825185881246816}
   _slider: {fileID: 108041270478134770}
-  _rotationDuration: 0.25
+  _rotationDuration: 0.5
   _moveDuration: 0.25
 --- !u!1 &1282339083812051959
 GameObject:

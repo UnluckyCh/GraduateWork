@@ -36,7 +36,7 @@ public class LevelController : MonoBehaviour
 
     private void SetDifficulty1()
     {
-        healthUIUpdater.MaxHealth = 10;
+        healthUIUpdater.MaxHealth = 5;
         //healthUIUpdater.SetCurrentHealth(10);
         simplePlayerController.shieldEffectDuration = 20f;
         playerMovement.doubleJumpEffectDuration = 20f;
@@ -45,7 +45,7 @@ public class LevelController : MonoBehaviour
 
     private void SetDifficulty2()
     {
-        healthUIUpdater.MaxHealth = 5;
+        healthUIUpdater.MaxHealth = 3;
         //healthUIUpdater.SetCurrentHealth(5);
         simplePlayerController.shieldEffectDuration = 15f;
         playerMovement.doubleJumpEffectDuration = 15f;
@@ -54,7 +54,7 @@ public class LevelController : MonoBehaviour
 
     private void SetDifficulty3()
     {
-        healthUIUpdater.MaxHealth = 3;
+        healthUIUpdater.MaxHealth = 1;
         //healthUIUpdater.SetCurrentHealth(3);
         simplePlayerController.shieldEffectDuration = 10f;
         playerMovement.doubleJumpEffectDuration = 10f;

@@ -10,7 +10,7 @@ public class GemCounter : MonoBehaviour
 
     public TextMeshProUGUI gemCountText;
 
-    private void Awake()
+    private void Start()
     {
         if (Instance == null)
         {

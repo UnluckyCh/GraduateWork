@@ -10,7 +10,7 @@ public class LoadingScreenController : MonoBehaviour
     [SerializeField] private RectTransform _innerSquare;
     [SerializeField] private Slider _slider;
 
-    [SerializeField] private float _rotationDuration = 0.25f;
+    [SerializeField] private float _rotationDuration = 0.5f;
     [SerializeField] private float _moveDuration = 0.25f;
 
     private Vector2 _startInnerPosition;
@@ -34,7 +34,7 @@ public class LoadingScreenController : MonoBehaviour
         while (true)
         {
             // Фейковый прогресс слайдера
-            fakeProgress = Mathf.Min(fakeProgress + Time.deltaTime * 0.1f, 1f);
+            fakeProgress = Mathf.Min(fakeProgress + Time.deltaTime * 2f, 1f);
             _slider.value = fakeProgress;
 
             // Анимация квадрата
@@ -103,7 +103,7 @@ public class LoadingScreenController : MonoBehaviour
             yield return null;
         }
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.3f);
     }
 
 
