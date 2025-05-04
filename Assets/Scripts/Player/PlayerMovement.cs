@@ -98,30 +98,48 @@ public class PlayerMovement : MonoBehaviour
 
     private void DetectGround()
     {
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.down, 0.6f);
+        Vector2 originLeft = (Vector2)transform.position + Vector2.left * 0.12f;
+        Vector2 originRight = (Vector2)transform.position + Vector2.right * 0.12f;
+        float rayLength = 0.6f;
+
+        RaycastHit2D[] hitsLeft = Physics2D.RaycastAll(originLeft, Vector2.down, rayLength);
+        RaycastHit2D[] hitsRight = Physics2D.RaycastAll(originRight, Vector2.down, rayLength);
+
+        Debug.DrawRay(originLeft, Vector2.down * rayLength, Color.red);
+        Debug.DrawRay(originRight, Vector2.down * rayLength, Color.red);
 
         bool anyStableSurface = false;
         bool anyFallingBoulder = false;
 
+        ProcessHits(hitsLeft, ref anyStableSurface, ref anyFallingBoulder);
+        ProcessHits(hitsRight, ref anyStableSurface, ref anyFallingBoulder);
+
+        _isGrounded = anyStableSurface;
+        _onlyFallingBoulderUnderFoot = !anyStableSurface && anyFallingBoulder;
+    }
+
+    private void ProcessHits(RaycastHit2D[] hits, ref bool anyStableSurface, ref bool anyFallingBoulder)
+    {
         foreach (var hit in hits)
         {
-            if (hit.collider == null || hit.collider.isTrigger) continue;
+            if (hit.collider == null || hit.collider.isTrigger) { continue; }
 
             if (hit.collider.TryGetComponent<BoulderMover>(out var boulder))
             {
                 if (boulder.BoulderIsFalling)
+                {
                     anyFallingBoulder = true;
+                }
                 else
+                {
                     anyStableSurface = true;
+                }
             }
             else
             {
                 anyStableSurface = true;
             }
         }
-
-        _isGrounded = anyStableSurface;
-        _onlyFallingBoulderUnderFoot = !anyStableSurface && anyFallingBoulder;
     }
 
     public void Run()
@@ -156,8 +174,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        Debug.DrawRay(transform.position, Vector2.down * 0.6f, Color.red);
-
         //RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.down, 0.6f);
         //_isGrounded = hits.Any(IsSolidGround);
 

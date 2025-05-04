@@ -67261,34 +67261,6 @@ PrefabInstance:
       propertyPath: lastTriggerVolume
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 4954774474025355397, guid: 53b00ac29208df14a8141f769ef277c8, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.46
-      objectReference: {fileID: 0}
-    - target: {fileID: 4954774474025355397, guid: 53b00ac29208df14a8141f769ef277c8, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.46
-      objectReference: {fileID: 0}
-    - target: {fileID: 4954774474025355397, guid: 53b00ac29208df14a8141f769ef277c8, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.46
-      objectReference: {fileID: 0}
-    - target: {fileID: 4954774474025355397, guid: 53b00ac29208df14a8141f769ef277c8, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4954774474025355397, guid: 53b00ac29208df14a8141f769ef277c8, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.952
-      objectReference: {fileID: 0}
-    - target: {fileID: 4954774474025355397, guid: 53b00ac29208df14a8141f769ef277c8, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4954774474025355397, guid: 53b00ac29208df14a8141f769ef277c8, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4988294292577030662, guid: 53b00ac29208df14a8141f769ef277c8, type: 3}
       propertyPath: m_Color.a
       value: 1

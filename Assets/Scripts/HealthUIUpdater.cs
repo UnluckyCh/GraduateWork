@@ -55,5 +55,13 @@ public class HealthUIUpdater : MonoBehaviour
                 _heartSprites[i].enabled = false;
             }
         }
+
+        if (MaxHealth == 1)
+        {
+            foreach (var hSprite in _heartSprites)
+            {
+                hSprite.enabled = false;
+            }
+        }
     }
 }

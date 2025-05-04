@@ -82,7 +82,7 @@ public class LevelStarter : MonoBehaviour
 
             if (_imageBG)
             {
-                _imageBG.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * 3.5f, tSmooth);
+                _imageBG.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * 4f, tSmooth);
             }
 
             // Поворот камеры

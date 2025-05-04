@@ -81,7 +81,7 @@ public class RotatorTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!_isActive)
+        if (!_isActive || !GameStateTracker.Instance.IsGameRunning)
             return;
 
         if (!collision.CompareTag("Bullet")) return;

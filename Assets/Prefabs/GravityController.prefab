@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4333860801830282745}
   - component: {fileID: 2373105113464458610}
+  - component: {fileID: 2776949332629860170}
   m_Layer: 0
   m_Name: GravityController
   m_TagString: Untagged
@@ -46,3 +47,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gravityRotator: {fileID: 0}
   _boulderMover: {fileID: 0}
+--- !u!114 &2776949332629860170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6044262482559867321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d06c1912af5baeb4e89c9ea9cf3c29b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
