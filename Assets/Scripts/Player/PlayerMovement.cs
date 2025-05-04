@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -98,8 +96,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void DetectGround()
     {
-        Vector2 originLeft = (Vector2)transform.position + Vector2.left * 0.12f;
-        Vector2 originRight = (Vector2)transform.position + Vector2.right * 0.12f;
+        Vector2 originLeft = (Vector2)transform.position + Vector2.left * 0.12f + Vector2.up * 0.1f;
+        Vector2 originRight = (Vector2)transform.position + Vector2.right * 0.12f + Vector2.up * 0.1f;
         float rayLength = 0.6f;
 
         RaycastHit2D[] hitsLeft = Physics2D.RaycastAll(originLeft, Vector2.down, rayLength);
@@ -122,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
     {
         foreach (var hit in hits)
         {
-            if (hit.collider == null || hit.collider.isTrigger) { continue; }
+            if (hit.collider == null || hit.collider.isTrigger || hit.collider.CompareTag("Player")) { continue; }
 
             if (hit.collider.TryGetComponent<BoulderMover>(out var boulder))
             {

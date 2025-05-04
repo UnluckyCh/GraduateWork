@@ -1586,6 +1586,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6391350091259160124, guid: 55f32536c0af66b4c9fd5b044a4f650a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 140
+      objectReference: {fileID: 0}
     - target: {fileID: 8946744234646873266, guid: 55f32536c0af66b4c9fd5b044a4f650a, type: 3}
       propertyPath: m_Name
       value: Gem_Count
