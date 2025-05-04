@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
-using Unity.VisualScripting;
 
 public class LevelStarter : MonoBehaviour
 {
@@ -30,6 +29,9 @@ public class LevelStarter : MonoBehaviour
 
     [Header("Канвасы для переключения")]
     public Canvas[] _canvases;
+
+    [Header("Экран загрузки")]
+    [SerializeField] private LoadingScreenController _loadingScreen;
 
     public void StartDifficulty(int level)
     {
@@ -93,7 +95,9 @@ public class LevelStarter : MonoBehaviour
         mainCamera.transform.SetPositionAndRotation(targetPosition, targetRotation);
         mainCamera.orthographicSize = targetSize;
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        yield return null;
+
+        _loadingScreen.StartLoading(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     private Quaternion GetTargetRotation(int index)

@@ -10985,6 +10985,7 @@ MonoBehaviour:
   _canvases:
   - {fileID: 476087579}
   - {fileID: 815971257}
+  _loadingScreen: {fileID: 7317382698736091546}
 --- !u!1 &922066702
 GameObject:
   m_ObjectHideFlags: 0
@@ -19055,6 +19056,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasLoadingScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 4523861015667561659, guid: f01810bb1df4b5340a87059b5ed0eaa0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6030003017304025497, guid: f01810bb1df4b5340a87059b5ed0eaa0, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -19153,6 +19158,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58b4b5f2070c5af4eb1dc50fbf685735, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7317382698736091546 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1372958686734981679, guid: f01810bb1df4b5340a87059b5ed0eaa0, type: 3}
+  m_PrefabInstance: {fileID: 7317382698736091542}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56b6bd53ba484b5478fe350d90cc14e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &7516081593739511662

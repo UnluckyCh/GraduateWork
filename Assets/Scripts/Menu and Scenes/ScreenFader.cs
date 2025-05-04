@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ScreenFader : MonoBehaviour
@@ -7,6 +9,7 @@ public class ScreenFader : MonoBehaviour
     [SerializeField] private float _defaultFadeDuration = 1f;
     [SerializeField] private Image _fadeImage;
     [SerializeField] private bool _fadeOnStart;
+    [SerializeField] private LoadingScreenController _loadingScreen;
 
     private void Start()
     {
@@ -49,6 +52,30 @@ public class ScreenFader : MonoBehaviour
         if (to == 0f)
         {
             _fadeImage.gameObject.SetActive(false);
+        }
+    }
+
+    public void FadeInAndLoadNextScene(int index, float duration = -0.3f)
+    {
+        float usedDuration = duration < 0 ? _defaultFadeDuration : duration;
+        if (_fadeImage)
+        {
+            _fadeImage.gameObject.SetActive(true);
+        }
+
+        StartCoroutine(FadeAndLoadRoutine(usedDuration, index));
+    }
+
+    private IEnumerator FadeAndLoadRoutine(float duration, int index)
+    {
+        yield return FadeRoutine(0f, 1f, duration);
+        if (_loadingScreen)
+        {
+            _loadingScreen.StartLoading(index);
+        }
+        else
+        {
+            Debug.LogWarning("ScreenFader: _loadingScreen не задан!");
         }
     }
 }

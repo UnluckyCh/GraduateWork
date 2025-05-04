@@ -7898,6 +7898,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f01810bb1df4b5340a87059b5ed0eaa0, type: 3}
+--- !u!114 &590476292 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1372958686734981679, guid: f01810bb1df4b5340a87059b5ed0eaa0, type: 3}
+  m_PrefabInstance: {fileID: 590476291}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56b6bd53ba484b5478fe350d90cc14e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &611056418
 GameObject:
   m_ObjectHideFlags: 0
@@ -25701,6 +25712,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6030003017304025497, guid: f01810bb1df4b5340a87059b5ed0eaa0, type: 3}
   m_PrefabInstance: {fileID: 590476291}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1510283881 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6526987183209931961, guid: f01810bb1df4b5340a87059b5ed0eaa0, type: 3}
+  m_PrefabInstance: {fileID: 590476291}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58b4b5f2070c5af4eb1dc50fbf685735, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1513311372
 GameObject:
   m_ObjectHideFlags: 0
@@ -26643,6 +26665,14 @@ PrefabInstance:
     - target: {fileID: 7860536133634522377, guid: 53b00ac29208df14a8141f769ef277c8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133589646972195438, guid: 53b00ac29208df14a8141f769ef277c8, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8358227388677478068, guid: 53b00ac29208df14a8141f769ef277c8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 8855959429280477860, guid: 53b00ac29208df14a8141f769ef277c8, type: 3}
       propertyPath: m_LocalScale.x
@@ -28871,6 +28901,22 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 114
       objectReference: {fileID: 0}
+    - target: {fileID: 2972806895079515281, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1273640653}
+    - target: {fileID: 2972806895079515281, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
+      propertyPath: eventSound
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2972806895079515281, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
+      propertyPath: _screenFader
+      value: 
+      objectReference: {fileID: 1510283881}
+    - target: {fileID: 2972806895079515281, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
+      propertyPath: _loadingScreen
+      value: 
+      objectReference: {fileID: 590476292}
     - target: {fileID: 4790046952993994221, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
       propertyPath: m_SizeDelta.x
       value: 470

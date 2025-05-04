@@ -51231,6 +51231,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6030003017304025497, guid: f01810bb1df4b5340a87059b5ed0eaa0, type: 3}
   m_PrefabInstance: {fileID: 1536960406}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1536960408 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6526987183209931961, guid: f01810bb1df4b5340a87059b5ed0eaa0, type: 3}
+  m_PrefabInstance: {fileID: 1536960406}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58b4b5f2070c5af4eb1dc50fbf685735, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1537316119
 GameObject:
   m_ObjectHideFlags: 0
@@ -68893,6 +68904,10 @@ PrefabInstance:
       propertyPath: eventSound
       value: 
       objectReference: {fileID: 771652347}
+    - target: {fileID: 2972806895079515281, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
+      propertyPath: _screenFader
+      value: 
+      objectReference: {fileID: 1536960408}
     - target: {fileID: 5037753313176814052, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
       propertyPath: m_Name
       value: Canvas Game Competed
