@@ -354,7 +354,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 3.0000014}
+  m_AnchoredPosition: {x: 0, y: 3}
   m_SizeDelta: {x: 0, y: 6.000003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &122177391
@@ -10979,12 +10979,15 @@ MonoBehaviour:
     focusTarget: {fileID: 970425626}
   _screenFader: {fileID: 7317382698736091543}
   fadeDuration: 1.5
+  _imageBG: {fileID: 1062189665}
   mainCamera: {fileID: 1902654157}
   transitionDuration: 2
   zoomSize: 0.1
   _canvases:
   - {fileID: 476087579}
   - {fileID: 815971257}
+  - {fileID: 674845488}
+  - {fileID: 410085533}
   _loadingScreen: {fileID: 7317382698736091546}
 --- !u!1 &922066702
 GameObject:
@@ -11854,7 +11857,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 674845489}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

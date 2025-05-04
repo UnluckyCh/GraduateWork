@@ -55,16 +55,15 @@ public class LoadingScreenController : MonoBehaviour
         {
             _slider.value = Mathf.Clamp01(operation.progress / 0.9f);
 
-            // Анимация квадрата
-            yield return StartCoroutine(AnimateStep(step));
-
-            // Если загрузка завершена
             if (operation.progress >= 0.9f)
             {
-                yield return null; // Подождать 1 кадр
+                // Не запускаем анимацию, сразу активируем сцену
                 operation.allowSceneActivation = true;
+                yield break; // Прерываем корутину
             }
 
+            // Анимация квадрата
+            yield return StartCoroutine(AnimateStep(step));
             step = (step + 1) % 4;
         }
     }

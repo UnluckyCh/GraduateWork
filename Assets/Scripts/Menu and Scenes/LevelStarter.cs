@@ -22,6 +22,8 @@ public class LevelStarter : MonoBehaviour
     public ScreenFader _screenFader; // UI Image на весь экран (черный)
     public float fadeDuration = 1.5f;
 
+    public Image _imageBG;
+
     [Header("Настройки камеры")]
     public Camera mainCamera;
     public float transitionDuration = 2f;
@@ -77,6 +79,11 @@ public class LevelStarter : MonoBehaviour
             group.text1.color = new Color(t1Start.r, t1Start.g, t1Start.b, Mathf.Lerp(t1Start.a, 0f, tSmooth));
             group.text2.color = new Color(t2Start.r, t2Start.g, t2Start.b, Mathf.Lerp(t2Start.a, 0f, tSmooth));
             group.image.color = new Color(imgStart.r, imgStart.g, imgStart.b, Mathf.Lerp(imgStart.a, 0f, tSmooth));
+
+            if (_imageBG)
+            {
+                _imageBG.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * 3.5f, tSmooth);
+            }
 
             // Поворот камеры
             mainCamera.transform.SetPositionAndRotation(Vector3.Lerp(startPosition, targetPosition, tSmooth),
