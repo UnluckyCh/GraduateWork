@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8358227388677478068}
   - component: {fileID: 630022696486502261}
+  - component: {fileID: 2891783229386952157}
   - component: {fileID: 8133589646972195438}
   m_Layer: 0
   m_Name: Trigger
@@ -50,6 +51,19 @@ MonoBehaviour:
   completedObject: {fileID: 0}
   targetOffset: {x: 0, y: 0}
   shrinkDuration: 1
+--- !u!114 &2891783229386952157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713518439054088399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c62514ee007e22c47b3a569bae60a4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gemCounter: {fileID: 0}
 --- !u!61 &8133589646972195438
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class MenuController : MonoBehaviour
 {
-    public GameObject buttonsMenu;
-    public GameObject difficultyMenu1;
-    public GameObject difficultyMenu2;
+    public GameObject _buttonsMenu;
+    public GameObject _difficultyMenu;
+    public GameObject _levelSelection;
 
     public void Start()
     {
@@ -13,16 +13,23 @@ public class MenuController : MonoBehaviour
 
     public void ShowMainMenu()
     {
-        buttonsMenu.SetActive(true);
-        difficultyMenu1.SetActive(false);
-        difficultyMenu2.SetActive(false);
+        _buttonsMenu.SetActive(true);
+        _difficultyMenu.SetActive(false);
+        _levelSelection.SetActive(false);
     }
 
     public void ShowDifficultyMenu()
     {
-        buttonsMenu.SetActive(false);
-        difficultyMenu1.SetActive(true);
-        difficultyMenu2.SetActive(true);
+        _buttonsMenu.SetActive(false);
+        _difficultyMenu.SetActive(true);
+        _levelSelection.SetActive(false);
+    }
+
+    public void ShowLevelSelection()
+    {
+        _buttonsMenu.SetActive(false);
+        _difficultyMenu.SetActive(false);
+        _levelSelection.SetActive(true);
     }
 
     public void QuitGame()

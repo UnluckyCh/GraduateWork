@@ -4,6 +4,7 @@ using TMPro;
 public class GemCounter : MonoBehaviour
 {
     public static GemCounter Instance;
+    public int CurrentGemsCollected => yellowGemsCollected;
 
     private int yellowGemsCollected = 0;
     private int totalYellowGems;

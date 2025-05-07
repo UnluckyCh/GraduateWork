@@ -2618,6 +2618,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2903457691070711002, guid: d7101605e0f5f9a4d96afafc514cb423, type: 3}
   m_PrefabInstance: {fileID: 94761591}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &94761593 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5148024644640997963, guid: d7101605e0f5f9a4d96afafc514cb423, type: 3}
+  m_PrefabInstance: {fileID: 94761591}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e41fc09fe7a3948a400eff0eb4335e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &103103953
 GameObject:
   m_ObjectHideFlags: 0
@@ -67257,6 +67268,10 @@ PrefabInstance:
       propertyPath: complitedGameObject
       value: 
       objectReference: {fileID: 363536093}
+    - target: {fileID: 2891783229386952157, guid: 53b00ac29208df14a8141f769ef277c8, type: 3}
+      propertyPath: _gemCounter
+      value: 
+      objectReference: {fileID: 94761593}
     - target: {fileID: 3531629648244575236, guid: 53b00ac29208df14a8141f769ef277c8, type: 3}
       propertyPath: lastTriggerVolume
       value: 

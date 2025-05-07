@@ -51451,6 +51451,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.6367924
       objectReference: {fileID: 0}
+    - target: {fileID: 2891783229386952157, guid: 53b00ac29208df14a8141f769ef277c8, type: 3}
+      propertyPath: _gemCounter
+      value: 
+      objectReference: {fileID: 4811470087209773081}
     - target: {fileID: 3531629648244575236, guid: 53b00ac29208df14a8141f769ef277c8, type: 3}
       propertyPath: lastTriggerVolume
       value: 
@@ -67285,6 +67289,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7101605e0f5f9a4d96afafc514cb423, type: 3}
+--- !u!114 &4811470087209773081 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5148024644640997963, guid: d7101605e0f5f9a4d96afafc514cb423, type: 3}
+  m_PrefabInstance: {fileID: 4811470087209773080}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e41fc09fe7a3948a400eff0eb4335e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &5088747360174427428
 Animator:
   serializedVersion: 5

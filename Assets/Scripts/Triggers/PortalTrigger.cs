@@ -9,10 +9,22 @@ public class PortalTrigger : MonoBehaviour
     public Vector2 targetOffset;
     public float shrinkDuration = 1f;
 
+    private LevelProgressSaver _levelProgressSaver;
+
     private bool _triggered = false;
     private Vector2 _startPosition;
     private Vector2 _targetPosition;
     private float _shrinkProgress = 0f;
+
+    private void Start()
+    {
+        TryGetComponent(out _levelProgressSaver);
+
+        if (!_levelProgressSaver)
+        {
+            Debug.Log("Не найден LevelProgressSaver на объекте");
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -67,6 +79,11 @@ public class PortalTrigger : MonoBehaviour
 
     private void CompletedGame()
     {
+        if(_levelProgressSaver)
+        {
+            _levelProgressSaver.SaveCurrentLevelProgress();
+        }
+
         complitedGameObject.GetComponent<CompletedScript>().CompletedGame();
     }
 }
