@@ -55,8 +55,8 @@ public class ScreenSettingsManager : MonoBehaviour
             _ => FullScreenMode.FullScreenWindow
         };
 
-        Screen.fullScreenMode = mode;                          // сначала режим
-        Screen.SetResolution(res.width, res.height, mode);     // потом размер
+        Screen.fullScreenMode = mode;
+        Screen.SetResolution(res.width, res.height, mode);
 
         Cursor.lockState = (mode == FullScreenMode.ExclusiveFullScreen)
             ? CursorLockMode.Confined
@@ -72,7 +72,7 @@ public class ScreenSettingsManager : MonoBehaviour
     {
         int savedW = PlayerPrefs.GetInt("ScreenResWidth", Screen.currentResolution.width);
         int savedH = PlayerPrefs.GetInt("ScreenResHeight", Screen.currentResolution.height);
-        int savedM = PlayerPrefs.GetInt("ScreenModeIndex", 1);   // «Безрамочный» по умолчанию
+        int savedM = PlayerPrefs.GetInt("ScreenModeIndex", 1);
 
         int resIndex = System.Array.FindIndex(
             _resolutions,
