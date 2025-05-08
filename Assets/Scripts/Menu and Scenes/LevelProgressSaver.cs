@@ -25,6 +25,7 @@ public class LevelProgressSaver : MonoBehaviour
         if (newDifficulty > savedDifficulty)
         {
             PlayerPrefs.SetInt(difficultyKey, newDifficulty);
+            PlayerPrefs.SetInt(gemsKey, newGemsCollected);
         }
 
         int currentCompleted = PlayerPrefs.GetInt("LevelsCompletedCount", 0);

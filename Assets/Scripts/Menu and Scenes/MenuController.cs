@@ -68,10 +68,7 @@ public class MenuController : MonoBehaviour
         _buttonsMenu.SetActive(false);
         _difficultyMenu.SetActive(false);
         _levelSelection.SetActive(false);
-        if (_settingsMenu)
-        {
-            _settingsMenu.SetActive(false);
-        }
+        _settingsMenu.SetActive(false);
 
         target.SetActive(true);
     }
