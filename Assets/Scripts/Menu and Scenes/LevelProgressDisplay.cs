@@ -9,6 +9,7 @@ public class LevelProgressDisplay : MonoBehaviour
         public GameObject Yellow_Wings;
         public GameObject Red_Wings;
         public GameObject Lock;
+        public GameObject[] TextNumber;
         public GameObject[] Gems;
         public GameObject[] GemFrames;
         public Button Button;
@@ -40,15 +41,21 @@ public class LevelProgressDisplay : MonoBehaviour
                 frame.SetActive(false);
             }
 
-            // ”ровни с индексом до completedCount включительно Ч доступные
             bool isUnlocked = i <= completedCount;
 
             visual.Button.interactable = isUnlocked;
+            visual.HoverActivator.SetActive(false);
             visual.HoverActivator.Block = !isUnlocked;
 
             if (!isUnlocked)
             {
                 visual.Lock.SetActive(true);
+
+                foreach (var text in visual.TextNumber)
+                {
+                    text.SetActive(false);
+                }
+
                 continue;
             }
 
@@ -56,11 +63,11 @@ public class LevelProgressDisplay : MonoBehaviour
 
             // Wings по сложности
             int difficulty = PlayerPrefs.GetInt($"LevelDifficulty_{levelIndex}", 0);
-            if (difficulty == 1)
+            if (difficulty == 2)
             {
                 visual.Yellow_Wings.SetActive(true);
             }
-            else if (difficulty == 2)
+            else if (difficulty == 3)
             {
                 visual.Red_Wings.SetActive(true);
             }
@@ -76,6 +83,14 @@ public class LevelProgressDisplay : MonoBehaviour
             {
                 visual.GemFrames[g].SetActive(true);
             }
+        }
+    }
+
+    public void UpdateDisplay()
+    {
+        for (int i = 0; i < _levelVisuals.Length; i++)
+        {
+            _levelVisuals[i].HoverActivator.SetActive(false);
         }
     }
 }

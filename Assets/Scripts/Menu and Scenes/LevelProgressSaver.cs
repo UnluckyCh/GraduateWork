@@ -8,12 +8,24 @@ public class LevelProgressSaver : MonoBehaviour
     public void SaveCurrentLevelProgress()
     {
         int levelIndex = SceneManager.GetActiveScene().buildIndex;
-        int gemsCollected = _gemCounter.CurrentGemsCollected;
-        int difficulty = PlayerPrefs.GetInt("Difficulty", 0);
+        int newGemsCollected = _gemCounter.CurrentGemsCollected;
+        int newDifficulty = PlayerPrefs.GetInt("Difficulty", 0);
 
         PlayerPrefs.SetInt($"LevelPassed_{levelIndex}", 1);
-        PlayerPrefs.SetInt($"LevelGems_{levelIndex}", gemsCollected);
-        PlayerPrefs.SetInt($"LevelDifficulty_{levelIndex}", difficulty);
+
+        string gemsKey = $"LevelGems_{levelIndex}";
+        int savedGems = PlayerPrefs.GetInt(gemsKey, 0);
+        if (newGemsCollected > savedGems)
+        {
+            PlayerPrefs.SetInt(gemsKey, newGemsCollected);
+        }
+
+        string difficultyKey = $"LevelDifficulty_{levelIndex}";
+        int savedDifficulty = PlayerPrefs.GetInt(difficultyKey, 0);
+        if (newDifficulty > savedDifficulty)
+        {
+            PlayerPrefs.SetInt(difficultyKey, newDifficulty);
+        }
 
         int currentCompleted = PlayerPrefs.GetInt("LevelsCompletedCount", 0);
         if (currentCompleted < levelIndex)

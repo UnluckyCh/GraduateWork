@@ -35,6 +35,8 @@ public class LevelStarter : MonoBehaviour
     [Header("Ёкран загрузки")]
     [SerializeField] private LoadingScreenController _loadingScreen;
 
+    private int _targetLevelBuildIndex = 1;
+
     public void StartDifficulty(int level)
     {
         PlayerPrefs.SetInt("Difficulty", level);
@@ -104,8 +106,14 @@ public class LevelStarter : MonoBehaviour
 
         yield return null;
 
-        _loadingScreen.StartLoading(SceneManager.GetActiveScene().buildIndex + 1);
+        _loadingScreen.StartLoading(SceneManager.GetActiveScene().buildIndex + _targetLevelBuildIndex);
     }
+
+    public void SetTargetLevel(int buildIndex)
+    {
+        _targetLevelBuildIndex = buildIndex;
+    }
+
 
     private Quaternion GetTargetRotation(int index)
     {
