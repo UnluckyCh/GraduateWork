@@ -3,25 +3,19 @@ using System.Collections.Generic;
 
 public class AudioVolumeController : MonoBehaviour
 {
-    [SerializeField] Transform musicRoot;
-    [SerializeField] Transform sfxRoot;
+    [SerializeField] private Transform musicRoot;
+    [SerializeField] private Transform sfxRoot;
 
-    [SerializeField] float volumeScale = 0.04f; // 25 * 0.04 = 1.0 (т.е. 25 Ч нейтральна€ громкость)
+    [SerializeField] private float volumeScale = 0.04f; // 25 * 0.04 = 1.0
 
-    const string MusicKey = "MusicVolume_0_50";
-    const string SfxKey = "SfxVolume_0_50";
+    private const string MusicKey = "MusicVolume_0_50";
+    private const string SfxKey = "SfxVolume_0_50";
 
-    private List<VolumeEntry> _musicSources = new();
-    private List<VolumeEntry> _sfxSources = new();
+    private readonly List<VolumeEntry> _musicSources = new();
+    private readonly List<VolumeEntry> _sfxSources = new();
 
-    public static AudioVolumeController Instance { get; private set; }
-
-    private void Awake()
+    private void Start()
     {
-        if (Instance) { Destroy(gameObject); return; }
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-
         CollectAudioSources();
         UpdateFromPrefs();
     }
@@ -31,16 +25,22 @@ public class AudioVolumeController : MonoBehaviour
         _musicSources.Clear();
         _sfxSources.Clear();
 
-        foreach (var source in musicRoot.GetComponentsInChildren<AudioSource>(true))
+        if (musicRoot)
         {
-            if (!source) continue;
-            _musicSources.Add(new VolumeEntry(source));
+            foreach (var source in musicRoot.GetComponentsInChildren<AudioSource>(true))
+            {
+                if (!source) continue;
+                _musicSources.Add(new VolumeEntry(source));
+            }
         }
 
-        foreach (var source in sfxRoot.GetComponentsInChildren<AudioSource>(true))
+        if (sfxRoot)
         {
-            if (!source) continue;
-            _sfxSources.Add(new VolumeEntry(source));
+            foreach (var source in sfxRoot.GetComponentsInChildren<AudioSource>(true))
+            {
+                if (!source) continue;
+                _sfxSources.Add(new VolumeEntry(source));
+            }
         }
     }
 

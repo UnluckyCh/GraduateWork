@@ -7,6 +7,8 @@ public class MenuController : MonoBehaviour
     public GameObject _levelSelection;
     public GameObject _settingsMenu;
 
+    [SerializeField] AudioSource _clickSound;
+
     private enum MenuState
     {
         Main,
@@ -21,6 +23,18 @@ public class MenuController : MonoBehaviour
     public void Start()
     {
         ShowMainMenu();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && _currentMenu != MenuState.Main)
+        {
+            GoBack();
+            if (_clickSound)
+            {
+                _clickSound.Play();
+            }
+        }
     }
 
     public void ShowMainMenu()

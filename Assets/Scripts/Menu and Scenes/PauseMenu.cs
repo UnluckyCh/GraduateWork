@@ -4,10 +4,20 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
+    private enum PauseState
+    {
+        None,
+        Paused,
+        Settings
+    }
+
+    private PauseState _currentState = PauseState.None;
+
     public Canvas pauseCanvas;
     public AudioSource menuClickSound;
 
-    private bool isPaused = false;
+    [SerializeField] private Canvas _settingsCanvas;
+
     private bool block = false;
     public Button[] buttons;
 
@@ -17,39 +27,40 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1f;
-        isPaused = false;
         pauseCanvas.enabled = false;
         foreach (Button button in buttons)
         {
             button.interactable = false;
+        }
+
+        if (_settingsCanvas)
+        {
+            _settingsCanvas.gameObject.SetActive(false);
         }
     }
 
     void Update()
     {
-        if (!block && Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (isPaused)
-            {
-                ResumeGame();
-            }
-            else
-            {
-                PauseGame();
-            }
-        }
-    }
+        if (block) return;
 
-    public void ResumeGame()
-    {
-        //Cursor.visible = false;
-        Time.timeScale = 1f;
-        isPaused = false;
-        pauseCanvas.enabled = false;
-
-        foreach (Button button in buttons)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            button.interactable = false;
+            switch (_currentState)
+            {
+                case PauseState.Paused:
+                    ResumeGame();
+                    menuClickSound.Play();
+                    break;
+
+                case PauseState.Settings:
+                    BackToPauseMenu();
+                    break;
+
+                case PauseState.None:
+                    PauseGame();
+                    menuClickSound.Play();
+                    break;
+            }
         }
     }
 
@@ -57,21 +68,55 @@ public class PauseMenu : MonoBehaviour
     {
         Cursor.visible = true;
         Time.timeScale = 0f;
-        isPaused = true;
         pauseCanvas.enabled = true;
+        _settingsCanvas.gameObject.SetActive(false);
 
         foreach (Button button in buttons)
         {
             button.interactable = true;
         }
 
-        menuClickSound.Play();
+        _currentState = PauseState.Paused;
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+        pauseCanvas.enabled = false;
+        _settingsCanvas.gameObject.SetActive(false);
+
+        foreach (Button button in buttons)
+        {
+            button.interactable = false;
+        }
+
+        _currentState = PauseState.None;
     }
 
     public void RestartGame()
     {
         Time.timeScale = 1f;
         _screenFader.FadeInAndLoadNextScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void OpenSettingMenu()
+    {
+        pauseCanvas.enabled = false;
+        _settingsCanvas.gameObject.SetActive(true);
+
+        _currentState = PauseState.Settings;
+
+        menuClickSound.Play();
+    }
+
+    public void BackToPauseMenu()
+    {
+        _settingsCanvas.gameObject.SetActive(false);
+        pauseCanvas.enabled = true;
+
+        _currentState = PauseState.Paused;
+
+        menuClickSound.Play();
     }
 
     public void LoadMenu()

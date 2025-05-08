@@ -5,15 +5,16 @@ public class VolumeSettingsUI : MonoBehaviour
 {
     [SerializeField] Slider musicSlider;
     [SerializeField] Slider sfxSlider;
+    [SerializeField] AudioVolumeController _audioVolumeController;
 
     const string MusicKey = "MusicVolume_0_50";
     const string SfxKey = "SfxVolume_0_50";
 
-    void Awake()
+    void Start()
     {
         Init(musicSlider, MusicKey);
         Init(sfxSlider, SfxKey);
-        AudioVolumeController.Instance.UpdateFromPrefs();
+        _audioVolumeController.UpdateFromPrefs();
     }
 
     void Init(Slider slider, string key)
@@ -29,7 +30,7 @@ public class VolumeSettingsUI : MonoBehaviour
             int iv = (int)v;
             PlayerPrefs.SetInt(key, iv);
             PlayerPrefs.Save();
-            AudioVolumeController.Instance.UpdateFromPrefs();
+            _audioVolumeController.UpdateFromPrefs();
         });
     }
 }

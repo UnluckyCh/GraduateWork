@@ -156,6 +156,7 @@ MonoBehaviour:
   _difficultyMenu: {fileID: 1988606989}
   _levelSelection: {fileID: 1335794085}
   _settingsMenu: {fileID: 644604736}
+  _clickSound: {fileID: 1901770161}
 --- !u!224 &6180719
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6361,6 +6362,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345300764}
   m_CullTransparentMesh: 1
+--- !u!114 &362768866 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8417510879321733996, guid: 314171abdde30df4899a9ece52510174, type: 3}
+  m_PrefabInstance: {fileID: 5781004405599794800}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da9bf0fc26528594db7b17ef362da1f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &368514684
 GameObject:
   m_ObjectHideFlags: 0
@@ -25140,6 +25152,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2606750625586599041, guid: 602fa3e2bde99b645bf9ced65d25d99e, type: 3}
+      propertyPath: _audioVolumeController
+      value: 
+      objectReference: {fileID: 362768866}
     - target: {fileID: 6500274030640227875, guid: 602fa3e2bde99b645bf9ced65d25d99e, type: 3}
       propertyPath: m_Name
       value: CanvasSettnigsMenu
@@ -25269,7 +25285,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3147960162887093556, guid: 602fa3e2bde99b645bf9ced65d25d99e, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 602fa3e2bde99b645bf9ced65d25d99e, type: 3}
