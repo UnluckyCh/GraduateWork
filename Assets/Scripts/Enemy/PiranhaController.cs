@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class EnemySpriteAnimation : MonoBehaviour
+public class EnemyPiranhaController : MonoBehaviour
 {
     public Sprite[] idleSprites;
     public Sprite[] attackSprites;

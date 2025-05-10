@@ -208,6 +208,11 @@ public class SimplePlayerController : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        if (GravityController.Instance.IsActiveRotate)
+        {
+            return;
+        }
+
         if (alive && !damageBlocked)
         {
             DamageSound();
