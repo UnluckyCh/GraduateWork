@@ -32,7 +32,9 @@ public class PlayerMovement : MonoBehaviour
     private bool isJump = false;
     private bool isFall = true;
     private bool hasDoubleJumpEffect = false;
+
     private bool _isGrounded = false;
+    private bool _wasGrounded = false;
 
     private bool airControlLocked = false;
     private bool fallStartedAfterGravity = false;
@@ -92,6 +94,17 @@ public class PlayerMovement : MonoBehaviour
                     airControlLocked = false;
             }
         }
+
+        if (!_wasGrounded && _isGrounded && rb.velocity.y <= 0.05f)
+        {
+            if (GravityController.Instance.IsActiveRotate) return;
+
+            landingSound.Play();
+            anim.SetBool("isJump", false);
+            isJump = false;
+            isFall = true;
+        }
+        _wasGrounded = _isGrounded;
     }
 
     private void DetectGround()
@@ -210,7 +223,7 @@ public class PlayerMovement : MonoBehaviour
             _jumpClickBlockTimer = JUMPCLICKBLOCKDURATION;
         }
 
-        if (rb.velocity.y <= 0 && _isGrounded)
+/*        if (rb.velocity.y <= 0 && _isGrounded)
         {
             anim.SetBool("isJump", false);
             if (isJump || !isFall)
@@ -219,7 +232,7 @@ public class PlayerMovement : MonoBehaviour
             }
             isJump = false;
             isFall = true;
-        }
+        }*/
     }
 
     private static bool IsSolidGround(RaycastHit2D hit)
