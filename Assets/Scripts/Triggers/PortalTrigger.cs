@@ -15,6 +15,7 @@ public class PortalTrigger : MonoBehaviour
     private Vector2 _startPosition;
     private Vector2 _targetPosition;
     private float _shrinkProgress = 0f;
+    private bool _gameCompleted = false;
 
     private void Start()
     {
@@ -79,11 +80,15 @@ public class PortalTrigger : MonoBehaviour
 
     private void CompletedGame()
     {
-        if(_levelProgressSaver)
+        if (_gameCompleted) return;
+
+        if (_levelProgressSaver)
         {
             _levelProgressSaver.SaveCurrentLevelProgress();
         }
 
         complitedGameObject.GetComponent<CompletedScript>().CompletedGame();
+
+        _gameCompleted = true;
     }
 }

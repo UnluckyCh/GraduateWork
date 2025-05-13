@@ -114,6 +114,34 @@ public class LevelStarter : MonoBehaviour
         _targetLevelBuildIndex = buildIndex;
     }
 
+    public void SetTargetToLastAvailableLevel()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int totalScenes = SceneManager.sceneCountInBuildSettings;
+
+        int lastPassedLevel = 0;
+
+        for (int i = 1; i < totalScenes; i++)
+        {
+            if (PlayerPrefs.GetInt($"LevelPassed_{i}", 0) == 1)
+            {
+                lastPassedLevel = i;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        int nextLevel = lastPassedLevel + 1;
+
+        if (nextLevel >= totalScenes)
+        {
+            nextLevel = 1;
+        }
+
+        _targetLevelBuildIndex = nextLevel - currentSceneIndex;
+    }
 
     private Quaternion GetTargetRotation(int index)
     {

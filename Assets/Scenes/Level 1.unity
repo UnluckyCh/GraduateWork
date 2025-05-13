@@ -27064,26 +27064,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1608767483}
-    - target: {fileID: 61917345739110651, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Play
-      objectReference: {fileID: 0}
-    - target: {fileID: 555358100228464518, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 114
-      objectReference: {fileID: 0}
-    - target: {fileID: 2475925439020621913, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 114
-      objectReference: {fileID: 0}
     - target: {fileID: 2972806895079515281, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 1273640653}
-    - target: {fileID: 2972806895079515281, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
-      propertyPath: eventSound
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2972806895079515281, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
       propertyPath: _screenFader
       value: 
@@ -27092,18 +27076,6 @@ PrefabInstance:
       propertyPath: _loadingScreen
       value: 
       objectReference: {fileID: 590476292}
-    - target: {fileID: 3738321369415240081, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
-      propertyPath: m_Color.b
-      value: 0.09803922
-      objectReference: {fileID: 0}
-    - target: {fileID: 3738321369415240081, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
-      propertyPath: m_Color.g
-      value: 0.09803922
-      objectReference: {fileID: 0}
-    - target: {fileID: 3738321369415240081, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
-      propertyPath: m_Color.r
-      value: 0.09803922
-      objectReference: {fileID: 0}
     - target: {fileID: 5037753313176814052, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
       propertyPath: m_Name
       value: Canvas Game Competed
@@ -27111,30 +27083,6 @@ PrefabInstance:
     - target: {fileID: 5037753313176814052, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5415547234832563224, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
-      propertyPath: m_Color.b
-      value: 0.09803922
-      objectReference: {fileID: 0}
-    - target: {fileID: 5415547234832563224, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
-      propertyPath: m_Color.g
-      value: 0.09803922
-      objectReference: {fileID: 0}
-    - target: {fileID: 5415547234832563224, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
-      propertyPath: m_Color.r
-      value: 0.09803922
-      objectReference: {fileID: 0}
-    - target: {fileID: 5755093380386406477, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
-      propertyPath: m_Color.b
-      value: 0.09803922
-      objectReference: {fileID: 0}
-    - target: {fileID: 5755093380386406477, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
-      propertyPath: m_Color.g
-      value: 0.09803922
-      objectReference: {fileID: 0}
-    - target: {fileID: 5755093380386406477, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
-      propertyPath: m_Color.r
-      value: 0.09803922
       objectReference: {fileID: 0}
     - target: {fileID: 6392820719623115044, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
       propertyPath: m_Pivot.x
@@ -27224,10 +27172,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1608767483}
-    - target: {fileID: 6991708707284530507, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Play
-      objectReference: {fileID: 0}
     - target: {fileID: 7028654241280658111, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
       propertyPath: m_Camera
       value: 
@@ -27236,10 +27180,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1608767483}
-    - target: {fileID: 8126337788597108454, guid: 7c201be3cd3883643a09261d7e6c82dc, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Play
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

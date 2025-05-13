@@ -12,6 +12,7 @@ public class LastTriggerScript : MonoBehaviour
     public float shrinkDuration = 1f;
     private float shrinkProgress = 0f;
     public GameObject completedObject;
+    private bool _gameCompleted = false;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -71,6 +72,10 @@ public class LastTriggerScript : MonoBehaviour
 
     private void CompletedGame()
     {
+        if (_gameCompleted) return;
+
         complitedGameObject.GetComponent<CompletedScript>().CompletedGame();
+
+        _gameCompleted = true;
     }
 }

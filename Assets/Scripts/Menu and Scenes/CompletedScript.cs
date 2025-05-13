@@ -11,12 +11,31 @@ public class CompletedScript : MonoBehaviour
     public AudioSource eventSound;
     public PauseMenu pauseMenu;
 
+    [Header("RectTransforms для сдвига")]
+    [SerializeField] private RectTransform _gemTransform;
+    [SerializeField] private RectTransform _healthTransform;
+
     [Header("Переключатель сцен")]
     [SerializeField] private ScreenFader _screenFader;
+
+    private Vector2 _initialGemPos;
+    private Vector2 _initialHealthPos;
+
+    private const float SHIFTX = -50f;
 
     void Start()
     {
         completedCanvas.enabled = false;
+
+        if (_gemTransform)
+        {
+            _initialGemPos = _gemTransform.anchoredPosition;
+        }
+
+        if (_healthTransform)
+        {
+            _initialHealthPos = _healthTransform.anchoredPosition;
+        }
     }
 
     public void CompletedGame()
@@ -77,44 +96,41 @@ public class CompletedScript : MonoBehaviour
 
     void UpdateCompletedText()
     {
+        bool isHealthPerfect = false;
+        bool isGemsPerfect = false;
+
         if (countHeartsText)
         {
-            // Получаем текущее и максимальное здоровье
-            HealthUIUpdater healthUpdater = FindObjectOfType<HealthUIUpdater>();
-            if (healthUpdater != null)
+            var healthUpdater = FindObjectOfType<HealthUIUpdater>();
+            if (healthUpdater)
             {
                 int currentHealth = healthUpdater.CurrentHealth;
                 int maxHealth = healthUpdater.MaxHealth;
-                if (maxHealth == currentHealth)
+
+                isHealthPerfect = (currentHealth == maxHealth);
+                countHeartsText.text = isHealthPerfect ? "Perfect" : $"{currentHealth}/{maxHealth}";
+                countHeartsText.fontSize = isHealthPerfect ? 86 : 106;
+                if (_healthTransform)
                 {
-                    countHeartsText.fontSize = 90;
-                    countHeartsText.text = "Perfect";
-                }
-                else
-                {
-                    countHeartsText.fontSize = 106;
-                    countHeartsText.text = currentHealth + "/" + maxHealth;
+                    _healthTransform.anchoredPosition = isHealthPerfect ? (_initialHealthPos + new Vector2(SHIFTX, 0)) : _initialHealthPos;
                 }
             }
         }
 
         if (countGemsText)
         {
-            // Получаем количество собранных жёлтых гемов
-            GemCounter gemCounter = FindObjectOfType<GemCounter>();
+            var gemCounter = FindObjectOfType<GemCounter>();
             if (gemCounter)
             {
-                int yellowGemsCollected = gemCounter.GetYellowGemsCollected();
-                int totalYellowGems = gemCounter.GetTotalYellowGems();
-                if (totalYellowGems == yellowGemsCollected)
+                int collected = gemCounter.GetYellowGemsCollected();
+                int total = gemCounter.GetTotalYellowGems();
+
+                isGemsPerfect = (collected == total);
+                countGemsText.text = isGemsPerfect ? "Perfect" : $"{collected}/{total}";
+                countGemsText.fontSize = isGemsPerfect ? 86 : 106;
+                if (_gemTransform)
                 {
-                    countGemsText.fontSize = 90;
-                    countGemsText.text = "Perfect";
-                }
-                else
-                {
-                    countGemsText.fontSize = 106;
-                    countGemsText.text = yellowGemsCollected + "/" + totalYellowGems;
+                    _gemTransform.anchoredPosition = isGemsPerfect ? (_initialGemPos + new Vector2(SHIFTX, 0)) : _initialGemPos;
                 }
             }
         }
