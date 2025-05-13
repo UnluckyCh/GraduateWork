@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public float movePower = 6.5f;
     public float jumpPower = 22f;
     public float doubleJumpEffectDuration = 15f;
-    public float coyoteTime = 0.1f;
+    public float coyoteTime = 0.2f;
     public GameObject gemObject;
     public GameObject auraObject;
     public AudioSource landingSound;
@@ -34,7 +34,11 @@ public class PlayerMovement : MonoBehaviour
     private bool hasDoubleJumpEffect = false;
 
     private bool _isGrounded = false;
-    private bool _wasGrounded = false;
+    private bool _wasGrounded = true;
+    private bool _pendingLanding = false;
+    private float _landingTimer = 0f;
+    private const float LANDING_DELAY = 0.4f;
+
 
     private bool airControlLocked = false;
     private bool fallStartedAfterGravity = false;
@@ -62,6 +66,16 @@ public class PlayerMovement : MonoBehaviour
     {
         DetectGround();
 
+        HandleDoubleJumpEffectTimer();
+        HandleJumpClickBlockTimer();
+        HandleAirControlLock();
+        HandleLanding();
+
+        _wasGrounded = _isGrounded;
+    }
+
+    private void HandleDoubleJumpEffectTimer()
+    {
         if (hasDoubleJumpEffect)
         {
             doubleJumpEffectTimer -= Time.deltaTime;
@@ -70,41 +84,77 @@ public class PlayerMovement : MonoBehaviour
                 DisableDoubleJumpEffect();
             }
         }
+    }
 
+    private void HandleJumpClickBlockTimer()
+    {
         if (_jumpClickBlockTimer > 0f)
         {
             _jumpClickBlockTimer -= Time.deltaTime;
         }
+    }
 
-        if (airControlLocked)
+    private void HandleAirControlLock()
+    {
+        if (!airControlLocked)
+            return;
+
+        if (_onlyFallingBoulderUnderFoot)
+            return;
+
+        if (_isGrounded)
         {
-            if (_onlyFallingBoulderUnderFoot)
-                return;
+            airControlLocked = false;
+        }
+        else
+        {
+            if (!fallStartedAfterGravity && Mathf.Abs(rb.velocity.y) > 0.05f)
+            {
+                fallStartedAfterGravity = true;
+            }
 
-            if (_isGrounded)
+            if (fallStartedAfterGravity && Mathf.Abs(rb.velocity.y) < 0.05f)
             {
                 airControlLocked = false;
             }
+        }
+    }
+
+    private void HandleLanding()
+    {
+        if (!_wasGrounded && _isGrounded)
+        {
+            if (rb.velocity.y < -0.05f)
+            {
+                if (GravityController.Instance.IsActiveRotate) return;
+
+                landingSound.Play();
+                anim.SetBool("isJump", false);
+                isJump = false;
+                isFall = true;
+            }
             else
             {
-                if (!fallStartedAfterGravity && Mathf.Abs(rb.velocity.y) > 0.05f)
-                    fallStartedAfterGravity = true;
-
-                if (fallStartedAfterGravity && Mathf.Abs(rb.velocity.y) < 0.05f)
-                    airControlLocked = false;
+                _pendingLanding = true;
+                _landingTimer = LANDING_DELAY;
             }
         }
 
-        if (!_wasGrounded && _isGrounded && rb.velocity.y <= 0.05f)
+        if (_pendingLanding)
         {
-            if (GravityController.Instance.IsActiveRotate) return;
-
-            landingSound.Play();
-            anim.SetBool("isJump", false);
-            isJump = false;
-            isFall = true;
+            _landingTimer -= Time.deltaTime;
+            if (_landingTimer <= 0f)
+            {
+                if (_isGrounded && !GravityController.Instance.IsActiveRotate)
+                {
+                    landingSound.Play();
+                    anim.SetBool("isJump", false);
+                    isJump = false;
+                    isFall = true;
+                }
+                _pendingLanding = false;
+            }
         }
-        _wasGrounded = _isGrounded;
     }
 
     private void DetectGround()
