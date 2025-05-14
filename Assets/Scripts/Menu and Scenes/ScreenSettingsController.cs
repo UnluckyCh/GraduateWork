@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.Linq;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class ScreenSettingsManager : MonoBehaviour
 {
@@ -61,6 +62,8 @@ public class ScreenSettingsManager : MonoBehaviour
         Cursor.lockState = (mode == FullScreenMode.ExclusiveFullScreen)
             ? CursorLockMode.Confined
             : CursorLockMode.None;
+
+        //PlayerPrefs.DeleteAll();
 
         PlayerPrefs.SetInt("ScreenResWidth", res.width);
         PlayerPrefs.SetInt("ScreenResHeight", res.height);

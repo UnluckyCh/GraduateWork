@@ -77,6 +77,14 @@ public class MenuController : MonoBehaviour
         }
     }
 
+    public void HideAllMenus()
+    {
+        _buttonsMenu.SetActive(false);
+        _difficultyMenu.SetActive(false);
+        _levelSelection.SetActive(false);
+        _settingsMenu.SetActive(false);
+    }
+
     private void ActivateMenu(GameObject target)
     {
         _buttonsMenu.SetActive(false);

@@ -92,7 +92,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 80
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -510,7 +510,7 @@ MonoBehaviour:
   lavaDamageCooldown: 1
   spikeDamageCooldown: 0.5
   shieldEffectDuration: 15
-  actionsLocked: 0
+  moveLocked: 0
 --- !u!114 &794697844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535,6 +535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a96b128853c6b146a0e303e65fb5eb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _airControlMode: 0
   movePower: 6.5
   jumpPower: 22
   doubleJumpEffectDuration: 15
