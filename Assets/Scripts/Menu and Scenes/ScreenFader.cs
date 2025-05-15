@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ScreenFader : MonoBehaviour
@@ -10,6 +8,9 @@ public class ScreenFader : MonoBehaviour
     [SerializeField] private Image _fadeImage;
     [SerializeField] private bool _fadeOnStart;
     [SerializeField] private LoadingScreenController _loadingScreen;
+
+    [Header("Настройка музыки")]
+    [SerializeField] private AudioVolumeController _audioVolumeController;
 
     private void Start()
     {
@@ -61,6 +62,11 @@ public class ScreenFader : MonoBehaviour
         if (_fadeImage)
         {
             _fadeImage.gameObject.SetActive(true);
+        }
+
+        if (_audioVolumeController)
+        {
+            _audioVolumeController.StopCurrentMusic(0.8f);
         }
 
         StartCoroutine(FadeAndLoadRoutine(usedDuration, index));

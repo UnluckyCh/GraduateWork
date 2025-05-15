@@ -15,16 +15,16 @@ public class LevelProgressSaver : MonoBehaviour
 
         string gemsKey = $"LevelGems_{levelIndex}";
         int savedGems = PlayerPrefs.GetInt(gemsKey, 0);
-        if (newGemsCollected > savedGems)
-        {
-            PlayerPrefs.SetInt(gemsKey, newGemsCollected);
-        }
 
         string difficultyKey = $"LevelDifficulty_{levelIndex}";
         int savedDifficulty = PlayerPrefs.GetInt(difficultyKey, 0);
         if (newDifficulty > savedDifficulty)
         {
             PlayerPrefs.SetInt(difficultyKey, newDifficulty);
+            PlayerPrefs.SetInt(gemsKey, newGemsCollected);
+        }
+        else if (newDifficulty == savedDifficulty && newGemsCollected > savedGems)
+        {
             PlayerPrefs.SetInt(gemsKey, newGemsCollected);
         }
 

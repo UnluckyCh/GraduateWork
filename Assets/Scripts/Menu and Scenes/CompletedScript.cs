@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 using TMPro;
 
 public class CompletedScript : MonoBehaviour
@@ -8,7 +7,6 @@ public class CompletedScript : MonoBehaviour
     public Canvas completedCanvas;
     public TextMeshProUGUI countHeartsText;
     public TextMeshProUGUI countGemsText;
-    public AudioSource eventSound;
     public PauseMenu pauseMenu;
 
     [Header("RectTransforms для сдвига")]
@@ -45,30 +43,10 @@ public class CompletedScript : MonoBehaviour
             pauseMenu.ResumeGame();
             pauseMenu.BlockPause();
         }
+
         Cursor.visible = true;
         completedCanvas.enabled = true;
         UpdateCompletedText();
-        if (eventSound)
-        {
-            StartCoroutine(FadeOutSound());
-        }
-    }
-
-    IEnumerator FadeOutSound()
-    {
-        // Начальная громкость звука
-        float startVolume = eventSound.volume;
-
-        // Постепенное уменьшение громкости
-        while (eventSound.volume > 0)
-        {
-            eventSound.volume -= startVolume * Time.deltaTime / 5f; // Затухание звука
-            yield return null;
-        }
-
-        // Завершаем затухание и останавливаем звук
-        eventSound.Stop();
-        eventSound.volume = startVolume; // Возвращаем громкость на исходный уровень
     }
 
     public void RestartGame()
@@ -96,9 +74,6 @@ public class CompletedScript : MonoBehaviour
 
     void UpdateCompletedText()
     {
-        bool isHealthPerfect = false;
-        bool isGemsPerfect = false;
-
         if (countHeartsText)
         {
             var healthUpdater = FindObjectOfType<HealthUIUpdater>();
@@ -107,7 +82,7 @@ public class CompletedScript : MonoBehaviour
                 int currentHealth = healthUpdater.CurrentHealth;
                 int maxHealth = healthUpdater.MaxHealth;
 
-                isHealthPerfect = (currentHealth == maxHealth);
+                bool isHealthPerfect = (currentHealth == maxHealth);
                 countHeartsText.text = isHealthPerfect ? "Perfect" : $"{currentHealth}/{maxHealth}";
                 countHeartsText.fontSize = isHealthPerfect ? 86 : 106;
                 if (_healthTransform)
@@ -125,7 +100,7 @@ public class CompletedScript : MonoBehaviour
                 int collected = gemCounter.GetYellowGemsCollected();
                 int total = gemCounter.GetTotalYellowGems();
 
-                isGemsPerfect = (collected == total);
+                bool isGemsPerfect = (collected == total);
                 countGemsText.text = isGemsPerfect ? "Perfect" : $"{collected}/{total}";
                 countGemsText.fontSize = isGemsPerfect ? 86 : 106;
                 if (_gemTransform)

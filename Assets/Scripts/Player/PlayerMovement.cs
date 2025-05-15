@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _wasGrounded = true;
     private bool _pendingLanding = false;
     private float _landingTimer = 0f;
-    private const float LANDING_DELAY = 0.4f;
+    private const float LANDING_DELAY = 0.2f;
 
 
     private bool airControlLocked = false;
@@ -45,6 +45,9 @@ public class PlayerMovement : MonoBehaviour
 
     private float _jumpClickBlockTimer = 0f;
     private const float JUMPCLICKBLOCKDURATION = 0.1f;
+
+    private float _lastLandingSfxTime = -999f;
+    private const float LANDING_SFX_COOLDOWN = 0.15f;
 
     private bool _onlyFallingBoulderUnderFoot = false;
 
@@ -122,16 +125,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleLanding()
     {
+        if (_pendingLanding && !_isGrounded)
+        {
+            _pendingLanding = false;
+            return;
+        }
+
         if (!_wasGrounded && _isGrounded)
         {
             if (rb.velocity.y < -0.05f)
             {
-                if (GravityController.Instance.IsActiveRotate) return;
-
-                landingSound.Play();
-                anim.SetBool("isJump", false);
-                isJump = false;
-                isFall = true;
+                if (!GravityController.Instance.IsActiveRotate)
+                    PlayLandingSound();
             }
             else
             {
@@ -146,15 +151,24 @@ public class PlayerMovement : MonoBehaviour
             if (_landingTimer <= 0f)
             {
                 if (_isGrounded && !GravityController.Instance.IsActiveRotate)
-                {
-                    landingSound.Play();
-                    anim.SetBool("isJump", false);
-                    isJump = false;
-                    isFall = true;
-                }
-                _pendingLanding = false;
+                    PlayLandingSound();
             }
         }
+    }
+
+    private void PlayLandingSound()
+    {
+        if (Time.time - _lastLandingSfxTime < LANDING_SFX_COOLDOWN) return;
+
+        landingSound.Play();
+        _lastLandingSfxTime = Time.time;
+
+        _pendingLanding = false;
+        _landingTimer = 0f;
+
+        anim.SetBool("isJump", false);
+        isJump = false;
+        isFall = true;
     }
 
     private void DetectGround()
@@ -302,6 +316,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         _isGrounded = false;
+        _wasGrounded = false;
+        _pendingLanding = false;
+        _landingTimer = 0f;
+
         coyoteTimeCounter = 0f;
 
         anim.SetBool("isJump", true);

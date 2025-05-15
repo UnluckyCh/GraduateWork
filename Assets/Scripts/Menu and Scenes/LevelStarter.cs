@@ -35,6 +35,9 @@ public class LevelStarter : MonoBehaviour
     [Header("Экран загрузки")]
     [SerializeField] private LoadingScreenController _loadingScreen;
 
+    [Header("Настройка музыки")]
+    [SerializeField] private AudioVolumeController _audioVolumeController;
+
     private int _targetLevelBuildIndex = 1;
 
     public void StartDifficulty(int level)
@@ -50,6 +53,11 @@ public class LevelStarter : MonoBehaviour
         foreach (var canvas in _canvases)
         {
             canvas.renderMode = RenderMode.WorldSpace;
+        }
+
+        if (_audioVolumeController)
+        {
+            _audioVolumeController.StopCurrentMusic(fadeDuration * 0.9f);
         }
 
         // Запоминаем начальные параметры камеры

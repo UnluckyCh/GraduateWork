@@ -75,7 +75,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6ec2b44be7dede94fa70344dc948dfe2, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.17
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -208,6 +208,8 @@ MonoBehaviour:
   musicRoot: {fileID: 9112820438337996561}
   sfxRoot: {fileID: 4531618125255173294}
   volumeScale: 0.08
+  fadeDuration: 5
+  enableMusicLoop: 1
 --- !u!1 &5662816409319399438
 GameObject:
   m_ObjectHideFlags: 0

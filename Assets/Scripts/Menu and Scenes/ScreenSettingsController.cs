@@ -2,7 +2,6 @@ using UnityEngine;
 using TMPro;
 using System.Linq;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 
 public class ScreenSettingsManager : MonoBehaviour
 {
