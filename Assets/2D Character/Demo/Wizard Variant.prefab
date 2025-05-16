@@ -539,7 +539,7 @@ MonoBehaviour:
   movePower: 6.5
   jumpPower: 22
   doubleJumpEffectDuration: 15
-  coyoteTime: 0.15
+  coyoteTime: 0.13
   gemObject: {fileID: 0}
   auraObject: {fileID: 0}
   landingSound: {fileID: 0}

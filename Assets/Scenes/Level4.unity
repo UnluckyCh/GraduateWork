@@ -3367,8 +3367,10 @@ MonoBehaviour:
   completedCanvas: {fileID: 1692036945}
   countHeartsText: {fileID: 1271661440}
   countGemsText: {fileID: 53420595}
-  eventSound: {fileID: 771652347}
   pauseMenu: {fileID: 1273640653}
+  _gemTransform: {fileID: 0}
+  _healthTransform: {fileID: 0}
+  _screenFader: {fileID: 0}
 --- !u!1 &155444163
 GameObject:
   m_ObjectHideFlags: 0
@@ -23413,7 +23415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3152ac81fe1675446bbfa583c1872fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotationSpeed: 100
+  _rotationTime: 1
 --- !u!1 &883370013
 GameObject:
   m_ObjectHideFlags: 0
@@ -34479,11 +34481,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseCanvas: {fileID: 868459619}
   menuClickSound: {fileID: 1608767483}
+  _settingsCanvas: {fileID: 0}
   buttons:
   - {fileID: 2086419318}
   - {fileID: 540494840}
   - {fileID: 1911905849}
   - {fileID: 714184281}
+  _screenFader: {fileID: 0}
 --- !u!114 &1273640654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39464,12 +39468,12 @@ MonoBehaviour:
   deathCanvas: {fileID: 356087783}
   menuClickSound: {fileID: 1608767483}
   firstSound: {fileID: 576378960}
-  eventSound: {fileID: 771652347}
   buttons:
   - {fileID: 1515315109}
   - {fileID: 80627207}
   - {fileID: 1732997438}
   pauseMenu: {fileID: 1273640653}
+  _screenFader: {fileID: 0}
 --- !u!114 &1492514331
 MonoBehaviour:
   m_ObjectHideFlags: 0

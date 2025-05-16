@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public float movePower = 6.5f;
     public float jumpPower = 22f;
     public float doubleJumpEffectDuration = 15f;
-    public float coyoteTime = 0.2f;
+    public float coyoteTime = 0.1f;
     public GameObject gemObject;
     public GameObject auraObject;
     public AudioSource landingSound;
@@ -166,7 +166,10 @@ public class PlayerMovement : MonoBehaviour
             isJump = false;
             isFall = true;
 
-            coyoteTimeCounter = coyoteTime;
+            if (coyoteTimeCounter <= 0f)
+            {
+                coyoteTimeCounter = coyoteTime;
+            }
         }
     }
 
@@ -187,8 +190,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void DetectGround()
     {
-        Vector2 originLeft = (Vector2)transform.position + Vector2.left * 0.12f + Vector2.up * 0.1f;
-        Vector2 originRight = (Vector2)transform.position + Vector2.right * 0.12f + Vector2.up * 0.1f;
+        Vector2 originLeft = (Vector2)transform.position + Vector2.left * 0.1f + Vector2.up * 0.1f;
+        Vector2 originRight = (Vector2)transform.position + Vector2.right * 0.1f + Vector2.up * 0.1f;
         float rayLength = 0.6f;
 
         RaycastHit2D[] hitsLeft = Physics2D.RaycastAll(originLeft, Vector2.down, rayLength);
@@ -284,6 +287,7 @@ public class PlayerMovement : MonoBehaviour
             isJump = true;
             isFall = false;
             _jumpClickBlockTimer = JUMPCLICKBLOCKDURATION;
+            coyoteTimeCounter = 0f;
         }
         else if (hasDoubleJumpEffect && isJump && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)) && _jumpClickBlockTimer <= 0f && !_onlyFallingBoulderUnderFoot)
         {
@@ -291,6 +295,7 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("isJump", true);
             isJump = false;
             _jumpClickBlockTimer = JUMPCLICKBLOCKDURATION;
+            coyoteTimeCounter = 0f;
         }
 
         if (hasDoubleJumpEffect && !_isGrounded && isFall && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)) && _jumpClickBlockTimer <= 0f && !_onlyFallingBoulderUnderFoot)
@@ -299,6 +304,7 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("isJump", true);
             isFall = false;
             _jumpClickBlockTimer = JUMPCLICKBLOCKDURATION;
+            coyoteTimeCounter = 0f;
         }
 
 /*        if (rb.velocity.y <= 0 && _isGrounded)
