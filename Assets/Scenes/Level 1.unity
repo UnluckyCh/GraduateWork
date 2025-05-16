@@ -4679,7 +4679,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4531618125474209376}
+  m_Father: {fileID: 503319321}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &453708492
 AudioSource:
@@ -5709,6 +5709,46 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &503319320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 503319321}
+  m_Layer: 0
+  m_Name: GlobalSfxSounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &503319321
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503319320}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2057587088}
+  - {fileID: 1675429089}
+  - {fileID: 849587162}
+  - {fileID: 453708491}
+  - {fileID: 1256961937}
+  - {fileID: 1184932500}
+  - {fileID: 2040534446}
+  - {fileID: 985533706}
+  - {fileID: 1608767482}
+  m_Father: {fileID: 5009928786843721288}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &505239028
 GameObject:
   m_ObjectHideFlags: 0
@@ -10450,7 +10490,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4531618125474209376}
+  m_Father: {fileID: 503319321}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &849587163
 AudioSource:
@@ -12352,7 +12392,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4531618125474209376}
+  m_Father: {fileID: 503319321}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &985533707
 AudioSource:
@@ -14891,7 +14931,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4531618125474209376}
+  m_Father: {fileID: 503319321}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1184932501
 AudioSource:
@@ -15607,7 +15647,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4531618125474209376}
+  m_Father: {fileID: 503319321}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1256961938
 AudioSource:
@@ -25585,7 +25625,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4531618125474209376}
+  m_Father: {fileID: 503319321}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1608767483
 AudioSource:
@@ -26220,7 +26260,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4531618125474209376}
+  m_Father: {fileID: 503319321}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1675429090
 AudioSource:
@@ -30700,7 +30740,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4531618125474209376}
+  m_Father: {fileID: 503319321}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &2040534447
 AudioSource:
@@ -30924,7 +30964,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4531618125474209376}
+  m_Father: {fileID: 503319321}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &2057587089
 AudioSource:
@@ -32134,16 +32174,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2057587088}
-  - {fileID: 1675429089}
-  - {fileID: 849587162}
-  - {fileID: 453708491}
-  - {fileID: 1256961937}
-  - {fileID: 1184932500}
-  - {fileID: 2040534446}
-  - {fileID: 985533706}
-  - {fileID: 1608767482}
+  m_Children: []
   m_Father: {fileID: 5009928786843721288}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &5009928786843721288
@@ -32160,6 +32191,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9112820438691266015}
+  - {fileID: 503319321}
   - {fileID: 4531618125474209376}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -32270,7 +32302,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicRoot: {fileID: 9112820438691266015}
-  sfxRoot: {fileID: 4531618125474209376}
+  globalSfxRoot: {fileID: 503319321}
+  fadeSfxRoot: {fileID: 4531618125474209376}
   volumeScale: 0.08
   fadeDuration: 3
   enableMusicLoop: 1
