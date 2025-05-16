@@ -14013,7 +14013,12 @@ MonoBehaviour:
     focusTarget: {fileID: 970425626}
   _screenFader: {fileID: 7317382698736091543}
   fadeDuration: 1.5
-  _imageBG: {fileID: 1062189665}
+  _imagesBG:
+  - {fileID: 1062189665}
+  - {fileID: 1343970701}
+  - {fileID: 1907933974}
+  - {fileID: 651960621}
+  - {fileID: 1377888532}
   mainCamera: {fileID: 1902654157}
   transitionDuration: 2
   zoomSize: 0.1
