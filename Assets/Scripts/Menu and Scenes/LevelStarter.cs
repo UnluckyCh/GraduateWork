@@ -127,28 +127,36 @@ public class LevelStarter : MonoBehaviour
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int totalScenes = SceneManager.sceneCountInBuildSettings;
 
-        int lastPassedLevel = 0;
+        for (int i = 1; i < totalScenes; i++)
+        {
+            if (PlayerPrefs.GetInt($"LevelPassed_{i}", 0) == 0)
+            {
+                _targetLevelBuildIndex = i - currentSceneIndex;
+                return;
+            }
+        }
 
         for (int i = 1; i < totalScenes; i++)
         {
-            if (PlayerPrefs.GetInt($"LevelPassed_{i}", 0) == 1)
+            string difficultyKey = $"LevelDifficulty_{i}";
+            if (PlayerPrefs.GetInt(difficultyKey, 0) < 3)
             {
-                lastPassedLevel = i;
-            }
-            else
-            {
-                break;
+                _targetLevelBuildIndex = i - currentSceneIndex;
+                return;
             }
         }
 
-        int nextLevel = lastPassedLevel + 1;
-
-        if (nextLevel >= totalScenes)
+        for (int i = 1; i < totalScenes; i++)
         {
-            nextLevel = 1;
+            string gemsKey = $"LevelGems_{i}";
+            if (PlayerPrefs.GetInt(gemsKey, 0) < 3)
+            {
+                _targetLevelBuildIndex = i - currentSceneIndex;
+                return;
+            }
         }
 
-        _targetLevelBuildIndex = nextLevel - currentSceneIndex;
+        _targetLevelBuildIndex = 1 - currentSceneIndex;
     }
 
     private Quaternion GetTargetRotation(int index)
