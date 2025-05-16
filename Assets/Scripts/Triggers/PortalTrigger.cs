@@ -9,9 +9,6 @@ public class PortalTrigger : MonoBehaviour
     public Vector2 targetOffset;
     public float shrinkDuration = 1f;
 
-    [Header("Настройка музыки")]
-    [SerializeField] private AudioVolumeController _audioVolumeController;
-
     private LevelProgressSaver _levelProgressSaver;
 
     private bool _triggered = false;
@@ -47,11 +44,6 @@ public class PortalTrigger : MonoBehaviour
             if (GameStateTracker.Instance)
             {
                 GameStateTracker.Instance.StopGame();
-            }
-
-            if (_audioVolumeController)
-            {
-                _audioVolumeController.StopCurrentMusic(2f);
             }
 
             if (completedObject)

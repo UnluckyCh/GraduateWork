@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float _lastLandingSfxTime = -999f;
     private const float LANDING_SFX_COOLDOWN = 0.15f;
+    private const float MIN_VERTICAL_SPEED_FOR_GROUNDED = 0.05f;
 
     private bool _onlyFallingBoulderUnderFoot = false;
 
@@ -73,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
         HandleJumpClickBlockTimer();
         HandleAirControlLock();
         HandleLanding();
+        QuickGroundingCheck();
 
         _wasGrounded = _isGrounded;
     }
@@ -133,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (!_wasGrounded && _isGrounded)
         {
-            if (rb.velocity.y < -0.05f)
+            if (rb.velocity.y <= 0f)
             {
                 if (!GravityController.Instance.IsActiveRotate)
                     PlayLandingSound();
@@ -153,6 +155,18 @@ public class PlayerMovement : MonoBehaviour
                 if (_isGrounded && !GravityController.Instance.IsActiveRotate)
                     PlayLandingSound();
             }
+        }
+    }
+
+    private void QuickGroundingCheck()
+    {
+        if (isJump && _isGrounded && Mathf.Abs(rb.velocity.y) < MIN_VERTICAL_SPEED_FOR_GROUNDED && !_pendingLanding)
+        {
+            anim.SetBool("isJump", false);
+            isJump = false;
+            isFall = true;
+
+            coyoteTimeCounter = coyoteTime;
         }
     }
 

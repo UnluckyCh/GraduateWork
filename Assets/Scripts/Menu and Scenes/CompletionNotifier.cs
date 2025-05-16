@@ -66,7 +66,10 @@ public class CompletionNotifier : MonoBehaviour
         int totalLevels = SceneManager.sceneCountInBuildSettings - 1;
         for (int i = 1; i <= totalLevels; i++)
         {
-            if (PlayerPrefs.GetInt($"LevelDifficulty_{i}", 0) < requiredDifficulty)
+            int difficulty = PlayerPrefs.GetInt($"LevelDifficulty_{i}", 0);
+            int gems = PlayerPrefs.GetInt($"LevelGems_{i}", 0);
+
+            if (difficulty < requiredDifficulty || gems < 3)
             {
                 return false;
             }

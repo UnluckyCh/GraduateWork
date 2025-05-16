@@ -23741,7 +23741,6 @@ MonoBehaviour:
   deathCanvas: {fileID: 356087783}
   menuClickSound: {fileID: 1608767483}
   firstSound: {fileID: 576378960}
-  eventSound: {fileID: 771652347}
   buttons:
   - {fileID: 1515315109}
   - {fileID: 80627207}
@@ -32070,6 +32069,10 @@ PrefabInstance:
       propertyPath: _gravityRotator
       value: 
       objectReference: {fileID: 1587279937}
+    - target: {fileID: 2776949332629860170, guid: db7d11e0d63db2c4cb4e2cabb21fdb50, type: 3}
+      propertyPath: _audioVolumeController
+      value: 
+      objectReference: {fileID: 8417510878968529314}
     - target: {fileID: 4333860801830282745, guid: db7d11e0d63db2c4cb4e2cabb21fdb50, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

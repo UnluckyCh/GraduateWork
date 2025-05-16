@@ -63,6 +63,7 @@ public class ScreenSettingsManager : MonoBehaviour
             : CursorLockMode.None;
 
         //PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteKey("FinalMessage_Stage2_Shown");
 
         PlayerPrefs.SetInt("ScreenResWidth", res.width);
         PlayerPrefs.SetInt("ScreenResHeight", res.height);

@@ -4,6 +4,9 @@ public class GameStateTracker : MonoBehaviour
 {
     public static GameStateTracker Instance { get; private set; }
 
+    [Header("Настройка музыки")]
+    [SerializeField] private AudioVolumeController _audioVolumeController;
+
     public bool IsGameRunning { get; private set; }
 
     private void Awake()
@@ -30,5 +33,9 @@ public class GameStateTracker : MonoBehaviour
     public void StopGame()
     {
         IsGameRunning = false;
+        if (_audioVolumeController)
+        {
+            _audioVolumeController.StopCurrentMusic(0.8f);
+        }
     }
 }
