@@ -160,6 +160,7 @@ MonoBehaviour:
   _maxScaleMultiplier: 1.2
   _appearDuration: 0.5
   _typeRotator: 1
+  _isOneTimeRotator: 0
 --- !u!1 &7290273912587582400
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,6 +172,7 @@ GameObject:
   - component: {fileID: 584916284366754678}
   - component: {fileID: 9089691833242991855}
   - component: {fileID: 6810549230810712308}
+  - component: {fileID: 4250941966535222888}
   m_Layer: 0
   m_Name: Rays
   m_TagString: Untagged
@@ -5002,3 +5004,16 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &4250941966535222888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7290273912587582400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 830cbf850108b5442ad5cedf20820478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotationSpeed: -30
