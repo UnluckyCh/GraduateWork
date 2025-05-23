@@ -5928,6 +5928,18 @@ PrefabInstance:
       propertyPath: maxTime
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 6363433209311504229, guid: 904d0b8c28276a64c8101ddedd894d57, type: 3}
+      propertyPath: _attackEndSound
+      value: 
+      objectReference: {fileID: 987549058}
+    - target: {fileID: 6363433209311504229, guid: 904d0b8c28276a64c8101ddedd894d57, type: 3}
+      propertyPath: _attackWhooshSound
+      value: 
+      objectReference: {fileID: 987549059}
+    - target: {fileID: 6363433209311504229, guid: 904d0b8c28276a64c8101ddedd894d57, type: 3}
+      propertyPath: _attackStartReverseSound
+      value: 
+      objectReference: {fileID: 987549058}
     - target: {fileID: 6556113504776953920, guid: 904d0b8c28276a64c8101ddedd894d57, type: 3}
       propertyPath: _location
       value: 
@@ -46418,6 +46430,16 @@ Transform:
 --- !u!4 &987549057 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9112820438337996561, guid: 314171abdde30df4899a9ece52510174, type: 3}
+  m_PrefabInstance: {fileID: 987549055}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &987549058 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2685897836150363376, guid: 314171abdde30df4899a9ece52510174, type: 3}
+  m_PrefabInstance: {fileID: 987549055}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &987549059 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5878632013396407483, guid: 314171abdde30df4899a9ece52510174, type: 3}
   m_PrefabInstance: {fileID: 987549055}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &988332536

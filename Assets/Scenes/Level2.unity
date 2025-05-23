@@ -3321,6 +3321,18 @@ PrefabInstance:
       propertyPath: maxTime
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 6363433209311504229, guid: 904d0b8c28276a64c8101ddedd894d57, type: 3}
+      propertyPath: _attackEndSound
+      value: 
+      objectReference: {fileID: 1862418118}
+    - target: {fileID: 6363433209311504229, guid: 904d0b8c28276a64c8101ddedd894d57, type: 3}
+      propertyPath: _attackWhooshSound
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6363433209311504229, guid: 904d0b8c28276a64c8101ddedd894d57, type: 3}
+      propertyPath: _attackStartReverseSound
+      value: 
+      objectReference: {fileID: 1862418118}
     - target: {fileID: 6556113504776953920, guid: 904d0b8c28276a64c8101ddedd894d57, type: 3}
       propertyPath: _location
       value: 
@@ -25008,34 +25020,34 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 674203202}
     - targetCorrespondingSourceObject: {fileID: 2144459981011164532, guid: 314171abdde30df4899a9ece52510174, type: 3}
-      insertIndex: -1
+      insertIndex: 1
       addedObject: {fileID: 2057587088}
     - targetCorrespondingSourceObject: {fileID: 2144459981011164532, guid: 314171abdde30df4899a9ece52510174, type: 3}
-      insertIndex: -1
+      insertIndex: 2
       addedObject: {fileID: 1675429089}
     - targetCorrespondingSourceObject: {fileID: 2144459981011164532, guid: 314171abdde30df4899a9ece52510174, type: 3}
-      insertIndex: -1
+      insertIndex: 3
       addedObject: {fileID: 849587162}
     - targetCorrespondingSourceObject: {fileID: 2144459981011164532, guid: 314171abdde30df4899a9ece52510174, type: 3}
-      insertIndex: -1
+      insertIndex: 4
       addedObject: {fileID: 453708491}
     - targetCorrespondingSourceObject: {fileID: 2144459981011164532, guid: 314171abdde30df4899a9ece52510174, type: 3}
-      insertIndex: -1
+      insertIndex: 5
       addedObject: {fileID: 1256961937}
     - targetCorrespondingSourceObject: {fileID: 2144459981011164532, guid: 314171abdde30df4899a9ece52510174, type: 3}
-      insertIndex: -1
+      insertIndex: 6
       addedObject: {fileID: 1184932500}
     - targetCorrespondingSourceObject: {fileID: 2144459981011164532, guid: 314171abdde30df4899a9ece52510174, type: 3}
-      insertIndex: -1
+      insertIndex: 7
       addedObject: {fileID: 2040534446}
     - targetCorrespondingSourceObject: {fileID: 2144459981011164532, guid: 314171abdde30df4899a9ece52510174, type: 3}
-      insertIndex: -1
+      insertIndex: 8
       addedObject: {fileID: 985533706}
     - targetCorrespondingSourceObject: {fileID: 2144459981011164532, guid: 314171abdde30df4899a9ece52510174, type: 3}
-      insertIndex: -1
+      insertIndex: 9
       addedObject: {fileID: 1608767482}
     - targetCorrespondingSourceObject: {fileID: 2144459981011164532, guid: 314171abdde30df4899a9ece52510174, type: 3}
-      insertIndex: -1
+      insertIndex: 10
       addedObject: {fileID: 1845339200}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 314171abdde30df4899a9ece52510174, type: 3}
@@ -58812,6 +58824,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!82 &1862418118 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2685897836150363376, guid: 314171abdde30df4899a9ece52510174, type: 3}
+  m_PrefabInstance: {fileID: 703068176}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1868563966
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,9 @@ public class AttackController : MonoBehaviour
 {
     public bool IsAimingOrAttackLocked => _isAttacking || _isAttackAnimationPlaying;
 
+    [SerializeField] private AudioSource _attackEndSound;
+    [SerializeField] private AudioSource _attackStartSound;
+
     private Animator _animator;
     private TrajectoryController _trajectoryController;
     private Transform _playerTransform;
@@ -69,6 +72,10 @@ public class AttackController : MonoBehaviour
                 _isAttacking = true;
                 _isAttackAnimationPlaying = false;
                 _animator.SetTrigger("attackStart");
+                if (_attackStartSound)
+                {
+                    _attackStartSound.Play();
+                }
             }
         }
     }
@@ -97,6 +104,11 @@ public class AttackController : MonoBehaviour
         _isAttackAnimationPlaying = true;
         _trajectoryController.ClearTrajectory();
         _animator.SetTrigger("attackEnd");
+
+        if (_attackEndSound)
+        {
+            _attackEndSound.Play();
+        }
 
         Vector2 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         projectileLauncher.LaunchProjectile(targetPos);
