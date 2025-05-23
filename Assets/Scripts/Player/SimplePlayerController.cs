@@ -176,8 +176,50 @@ public class SimplePlayerController : MonoBehaviour
 
         if (other.CompareTag("Spike"))
         {
-            inSpike = true;
+            if (ShouldTakeSpikeDamage(other))
+            {
+                inSpike = true;
+            }
         }
+    }
+
+    private bool ShouldTakeSpikeDamage(Collider2D spikeCollider)
+    {
+        var rb = GetComponent<Rigidbody2D>();
+        if (!rb)
+        {
+            Debug.LogWarning("Нет Rigidbody2D на объекте игрока");
+            return true; // На всякий случай даём урон
+        }
+
+        var spike = spikeCollider.GetComponent<TriggerColliderByGravity>();
+        if (!spike)
+        {
+            return true; // Нет компонента — не проверяем направление
+        }
+
+        GravityDirection playerGravity = GravityController.Instance.CurrentGravity;
+        GravityDirection spikeGravity = spike.ActiveGravity;
+
+        float velocityY = rb.velocity.y;
+
+        bool shouldDamage = false;
+
+        if (IsOppositeGravity(playerGravity, spikeGravity))
+        {
+            shouldDamage = velocityY >= 0f; // Прыжок вверх к шипу на потолке
+        }
+        else
+        {
+            shouldDamage = velocityY <= 0f; // Падение вниз на шип
+        }
+
+        return shouldDamage;
+    }
+
+    private bool IsOppositeGravity(GravityDirection a, GravityDirection b)
+    {
+        return ((int)a + 2) % 4 == (int)b;
     }
 
     private void OnTriggerExit2D(Collider2D other)
