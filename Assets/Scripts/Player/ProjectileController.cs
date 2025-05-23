@@ -175,6 +175,13 @@ public class ProjectileController : MonoBehaviour
         if (col != null)
             col.enabled = false;
 
+        _spriteRenderer.sortingOrder = 50;
+
+        if (ExplosionSoundPlayer.Instance != null)
+        {
+            ExplosionSoundPlayer.Instance.PlayExplosion(transform.position);
+        }
+
         // Проигрываем анимацию взрыва с увеличением масштаба
         for (int i = 0; i < explosionSprites.Length; i++)
         {

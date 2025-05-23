@@ -5935,7 +5935,7 @@ PrefabInstance:
     - target: {fileID: 6363433209311504229, guid: 904d0b8c28276a64c8101ddedd894d57, type: 3}
       propertyPath: _attackWhooshSound
       value: 
-      objectReference: {fileID: 987549059}
+      objectReference: {fileID: 0}
     - target: {fileID: 6363433209311504229, guid: 904d0b8c28276a64c8101ddedd894d57, type: 3}
       propertyPath: _attackStartReverseSound
       value: 
@@ -46385,6 +46385,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sounds
       objectReference: {fileID: 0}
+    - target: {fileID: 9141566534943066680, guid: 314171abdde30df4899a9ece52510174, type: 3}
+      propertyPath: _rotatorUnifier
+      value: 
+      objectReference: {fileID: 2340381595835547695}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 1803823521343658192, guid: 314171abdde30df4899a9ece52510174, type: 3}
@@ -46435,11 +46439,6 @@ Transform:
 --- !u!82 &987549058 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 2685897836150363376, guid: 314171abdde30df4899a9ece52510174, type: 3}
-  m_PrefabInstance: {fileID: 987549055}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &987549059 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 5878632013396407483, guid: 314171abdde30df4899a9ece52510174, type: 3}
   m_PrefabInstance: {fileID: 987549055}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &988332536

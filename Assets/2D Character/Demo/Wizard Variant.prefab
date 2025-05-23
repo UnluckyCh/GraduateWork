@@ -213,6 +213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0894018a788292e4fa47acf7510d1a7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attackEndSound: {fileID: 0}
+  _attackStartSound: {fileID: 0}
   attackDirectionLockTime: 0.35
   projectileLauncher: {fileID: 3675084816464286588}
 --- !u!1 &9031183989210785154
@@ -225,6 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5680962302236339694}
   - component: {fileID: 3675084816464286588}
+  - component: {fileID: 6401856336743485874}
   m_Layer: 0
   m_Name: ProjectileLauncher
   m_TagString: Untagged
@@ -263,6 +266,20 @@ MonoBehaviour:
   _parentTransform: {fileID: 0}
   projectileInitialSpeed: 10
   projectileGravity: 6
+--- !u!114 &6401856336743485874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9031183989210785154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddcb7dc3a442aa04c9d11b6edfabe6fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionClip: {fileID: 8300000, guid: 704aefca9a4c18b4f87c8d839ba54107, type: 3}
+  _volume: 0.065
 --- !u!1001 &4766213055819134540
 PrefabInstance:
   m_ObjectHideFlags: 0

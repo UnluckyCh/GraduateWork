@@ -25011,6 +25011,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sounds
       objectReference: {fileID: 0}
+    - target: {fileID: 9141566534943066680, guid: 314171abdde30df4899a9ece52510174, type: 3}
+      propertyPath: _rotatorUnifier
+      value: 
+      objectReference: {fileID: 2340381595835547695}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 1803823521343658192, guid: 314171abdde30df4899a9ece52510174, type: 3}
