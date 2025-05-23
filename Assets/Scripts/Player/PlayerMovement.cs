@@ -165,11 +165,6 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("isJump", false);
             isJump = false;
             isFall = true;
-
-            if (coyoteTimeCounter <= 0f)
-            {
-                coyoteTimeCounter = coyoteTime;
-            }
         }
     }
 
@@ -280,7 +275,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Если нажата кнопка прыжка и игрок всё ещё находится в пределах "койот тайма"
-        if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)) && coyoteTimeCounter > 0f && _jumpClickBlockTimer <= 0f && !_onlyFallingBoulderUnderFoot)
+        if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && coyoteTimeCounter > 0f && _jumpClickBlockTimer <= 0f && !_onlyFallingBoulderUnderFoot)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             anim.SetBool("isJump", true);
@@ -289,7 +284,7 @@ public class PlayerMovement : MonoBehaviour
             _jumpClickBlockTimer = JUMPCLICKBLOCKDURATION;
             coyoteTimeCounter = 0f;
         }
-        else if (hasDoubleJumpEffect && isJump && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)) && _jumpClickBlockTimer <= 0f && !_onlyFallingBoulderUnderFoot)
+        else if (hasDoubleJumpEffect && isJump && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && _jumpClickBlockTimer <= 0f && !_onlyFallingBoulderUnderFoot)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             anim.SetBool("isJump", true);
@@ -298,7 +293,7 @@ public class PlayerMovement : MonoBehaviour
             coyoteTimeCounter = 0f;
         }
 
-        if (hasDoubleJumpEffect && !_isGrounded && isFall && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)) && _jumpClickBlockTimer <= 0f && !_onlyFallingBoulderUnderFoot)
+        if (hasDoubleJumpEffect && !_isGrounded && isFall && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && _jumpClickBlockTimer <= 0f && !_onlyFallingBoulderUnderFoot)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             anim.SetBool("isJump", true);
